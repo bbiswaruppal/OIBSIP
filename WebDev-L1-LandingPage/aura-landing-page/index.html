@@ -1,467 +1,666 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Aura Flow - The next-generation collaborative design and UI development workspace.">
-  <title>Aura Flow · Design & Ship Interfaces Faster</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-
-  <!-- ==================== STICKY NAVIGATION BAR ==================== -->
-  <header class="navbar-wrapper">
-    <nav class="navbar" aria-label="Main Navigation">
-      <a href="#" class="brand-logo">
-        <span class="logo-mark">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-            <polyline points="2 17 12 22 22 17"></polyline>
-            <polyline points="2 12 12 17 22 12"></polyline>
-          </svg>
-        </span>
-        <span class="brand-name">Aura<strong>Flow</strong></span>
-      </a>
-
-      <!-- Navigation Links (At least 3 links) -->
-      <ul class="nav-links">
-        <li><a href="#features" class="nav-link">Features</a></li>
-        <li><a href="#workflow" class="nav-link">Workflow</a></li>
-        <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
-        <li><a href="#pricing" class="nav-link">Pricing</a></li>
-      </ul>
-
-      <div class="nav-actions">
-        <a href="#pricing" class="btn btn-sm btn-outline">Sign In</a>
-        <a href="#pricing" class="btn btn-sm btn-primary">Start Free</a>
-      </div>
-    </nav>
-  </header>
-
-  <main>
-    <!-- ==================== HERO SECTION ==================== -->
-    <section class="hero-section" id="home">
-      <div class="hero-glow-sphere"></div>
-      <div class="container hero-container">
-        <!-- Release Pill -->
-        <div class="pill-badge">
-          <span class="pill-dot"></span>
-          <span class="pill-text">Aura Flow 2.0 is Live</span>
-          <span class="pill-arrow">→</span>
-        </div>
-
-        <!-- Headline & Subheadline -->
-        <h1 class="hero-title">
-          Design, collaborate, and ship <span class="gradient-text">interfaces at lightspeed</span>
-        </h1>
-        <p class="hero-subtitle">
-          The all-in-one visual canvas that unites product designers and frontend developers. 
-          Turn high-fidelity UI designs into production-ready code with automated design tokens.
-        </p>
-
-        <!-- Call-to-Action Buttons -->
-        <div class="hero-cta-group">
-          <a href="#pricing" class="btn btn-lg btn-primary">
-            <span>Get Started for Free</span>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Aura Flow - The next-generation collaborative design and UI development workspace."
+    />
+    <title>Aura Flow · Design & Ship Interfaces Faster</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- ==================== STICKY NAVIGATION BAR ==================== -->
+    <header class="navbar-wrapper">
+      <nav class="navbar" aria-label="Main Navigation">
+        <a href="#" class="brand-logo">
+          <span class="logo-mark">
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+              <polyline points="2 17 12 22 22 17"></polyline>
+              <polyline points="2 12 12 17 22 12"></polyline>
             </svg>
-          </a>
-          <a href="#workflow" class="btn btn-lg btn-secondary">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polygon points="5 3 19 12 5 21 5 3"></polygon>
-            </svg>
-            <span>Watch 2-Min Demo</span>
-          </a>
-        </div>
+          </span>
+          <span class="brand-name">Aura<strong>Flow</strong></span>
+        </a>
 
-        <!-- Social Proof Stats -->
-        <div class="social-proof-strip">
-          <div class="stat-item">
-            <strong class="stat-number">40k+</strong>
-            <span class="stat-label">Active Creators</span>
-          </div>
-          <div class="stat-divider"></div>
-          <div class="stat-item">
-            <strong class="stat-number">99.9%</strong>
-            <span class="stat-label">Uptime SLA</span>
-          </div>
-          <div class="stat-divider"></div>
-          <div class="stat-item">
-            <strong class="stat-number">4.9 / 5</strong>
-            <span class="stat-label">User Rating</span>
-          </div>
-        </div>
+        <!-- Navigation Links (At least 3 links) -->
+        <ul class="nav-links">
+          <li><a href="#features" class="nav-link">Features</a></li>
+          <li><a href="#workflow" class="nav-link">Workflow</a></li>
+          <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+          <li><a href="#pricing" class="nav-link">Pricing</a></li>
+        </ul>
 
-        <!-- Hero Canvas Mockup Preview (Pure CSS) -->
-        <div class="hero-preview-wrapper">
-          <div class="browser-frame">
-            <div class="browser-header">
-              <div class="browser-dots">
-                <span class="dot dot-red"></span>
-                <span class="dot dot-yellow"></span>
-                <span class="dot dot-green"></span>
-              </div>
-              <div class="browser-search-bar">
-                <span class="search-lock">🔒</span>
-                <span class="search-url">auraflow.io/workspace/canvas-alpha</span>
-              </div>
-              <div class="browser-user-pill">
-                <span class="avatar-circle">KD</span>
-                <span class="avatar-status">Live</span>
-              </div>
+        <div class="nav-actions">
+          <a href="#pricing" class="btn btn-sm btn-outline">Sign In</a>
+          <a href="#pricing" class="btn btn-sm btn-primary">Start Free</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <!-- ==================== HERO SECTION ==================== -->
+      <section class="hero-section" id="home">
+        <div class="hero-glow-sphere"></div>
+        <div class="container hero-container">
+          <!-- Release Pill -->
+          <div class="pill-badge">
+            <span class="pill-dot"></span>
+            <span class="pill-text">Aura Flow 2.0 is Live</span>
+            <span class="pill-arrow">→</span>
+          </div>
+
+          <!-- Headline & Subheadline -->
+          <h1 class="hero-title">
+            Design, collaborate, and ship
+            <span class="gradient-text">interfaces at lightspeed</span>
+          </h1>
+          <p class="hero-subtitle">
+            The all-in-one visual canvas that unites product designers and
+            frontend developers. Turn high-fidelity UI designs into
+            production-ready code with automated design tokens.
+          </p>
+
+          <!-- Call-to-Action Buttons -->
+          <div class="hero-cta-group">
+            <a href="#pricing" class="btn btn-lg btn-primary">
+              <span>Get Started for Free</span>
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+            <a href="#workflow" class="btn btn-lg btn-secondary">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+              <span>Watch 2-Min Demo</span>
+            </a>
+          </div>
+
+          <!-- Social Proof Stats -->
+          <div class="social-proof-strip">
+            <div class="stat-item">
+              <strong class="stat-number">40k+</strong>
+              <span class="stat-label">Active Creators</span>
             </div>
-            
-            <div class="mockup-canvas">
-              <div class="canvas-sidebar">
-                <div class="sidebar-item active">Components</div>
-                <div class="sidebar-item">Variables</div>
-                <div class="sidebar-item">Assets</div>
-                <div class="sidebar-item">Code Sync</div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <strong class="stat-number">99.9%</strong>
+              <span class="stat-label">Uptime SLA</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <strong class="stat-number">4.9 / 5</strong>
+              <span class="stat-label">User Rating</span>
+            </div>
+          </div>
+
+          <!-- Hero Canvas Mockup Preview (Pure CSS) -->
+          <div class="hero-preview-wrapper">
+            <div class="browser-frame">
+              <div class="browser-header">
+                <div class="browser-dots">
+                  <span class="dot dot-red"></span>
+                  <span class="dot dot-yellow"></span>
+                  <span class="dot dot-green"></span>
+                </div>
+                <div class="browser-search-bar">
+                  <span class="search-lock">🔒</span>
+                  <span class="search-url"
+                    >auraflow.io/workspace/canvas-alpha</span
+                  >
+                </div>
+                <div class="browser-user-pill">
+                  <span class="avatar-circle">KD</span>
+                  <span class="avatar-status">Live</span>
+                </div>
               </div>
-              <div class="canvas-artboard">
-                <div class="artboard-card card-alpha">
-                  <div class="card-chip">Design System</div>
-                  <h4>Interactive Button System</h4>
-                  <div class="color-palette-preview">
-                    <span class="swatch swatch-indigo"></span>
-                    <span class="swatch swatch-cyan"></span>
-                    <span class="swatch swatch-emerald"></span>
-                    <span class="swatch swatch-amber"></span>
+
+              <div class="mockup-canvas">
+                <div class="canvas-sidebar">
+                  <div class="sidebar-item active">Components</div>
+                  <div class="sidebar-item">Variables</div>
+                  <div class="sidebar-item">Assets</div>
+                  <div class="sidebar-item">Code Sync</div>
+                </div>
+                <div class="canvas-artboard">
+                  <div class="artboard-card card-alpha">
+                    <div class="card-chip">Design System</div>
+                    <h4>Interactive Button System</h4>
+                    <div class="color-palette-preview">
+                      <span class="swatch swatch-indigo"></span>
+                      <span class="swatch swatch-cyan"></span>
+                      <span class="swatch swatch-emerald"></span>
+                      <span class="swatch swatch-amber"></span>
+                    </div>
+                  </div>
+                  <div class="artboard-card card-beta">
+                    <div class="code-line">
+                      <span class="token-keyword">export const</span>
+                      <span class="token-fn">Card</span> = () =&gt; (
+                    </div>
+                    <div class="code-line indent-1">
+                      &lt;<span class="token-tag">div</span>
+                      <span class="token-prop">className</span>=<span
+                        class="token-str"
+                        >"aura-card"</span
+                      >&gt;
+                    </div>
+                    <div class="code-line indent-2">
+                      &lt;<span class="token-tag">h3</span>&gt;Ready to
+                      Ship&lt;/<span class="token-tag">h3</span>&gt;
+                    </div>
+                    <div class="code-line indent-1">
+                      &lt;/<span class="token-tag">div</span>&gt;
+                    </div>
+                    <div class="code-line">);</div>
                   </div>
                 </div>
-                <div class="artboard-card card-beta">
-                  <div class="code-line"><span class="token-keyword">export const</span> <span class="token-fn">Card</span> = () =&gt; (</div>
-                  <div class="code-line indent-1">&lt;<span class="token-tag">div</span> <span class="token-prop">className</span>=<span class="token-str">"aura-card"</span>&gt;</div>
-                  <div class="code-line indent-2">&lt;<span class="token-tag">h3</span>&gt;Ready to Ship&lt;/<span class="token-tag">h3</span>&gt;</div>
-                  <div class="code-line indent-1">&lt;/<span class="token-tag">div</span>&gt;</div>
-                  <div class="code-line">);</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== CONTENT SECTION 1: FEATURES ==================== -->
+      <section class="section features-section" id="features">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">Core Features</span>
+            <h2 class="section-title">
+              Everything your team needs to build world-class products
+            </h2>
+            <p class="section-subtitle">
+              Eliminate handoff friction with native real-time sync, reactive
+              components, and built-in token compilation.
+            </p>
+          </div>
+
+          <div class="features-grid">
+            <!-- Feature Card 1 -->
+            <div class="feature-card">
+              <div class="feature-icon-wrapper">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+              </div>
+              <h3 class="feature-title">Real-Time Multiplayer</h3>
+              <p class="feature-description">
+                Simultaneous multi-user collaboration with zero lag. See cursor
+                movements, instant component adjustments, and live commentary.
+              </p>
+              <span class="feature-meta">Sub-50ms sync</span>
+            </div>
+
+            <!-- Feature Card 2 -->
+            <div class="feature-card">
+              <div class="feature-icon-wrapper">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="16 18 22 12 16 6"></polyline>
+                  <polyline points="8 6 2 12 8 18"></polyline>
+                </svg>
+              </div>
+              <h3 class="feature-title">Automated Code Export</h3>
+              <p class="feature-description">
+                Directly compile visual layout hierarchies into accessible HTML,
+                modern CSS Grid/Flexbox, or clean component templates.
+              </p>
+              <span class="feature-meta">Zero bloat output</span>
+            </div>
+
+            <!-- Feature Card 3 -->
+            <div class="feature-card">
+              <div class="feature-icon-wrapper">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="feature-title">Smart Design Tokens</h3>
+              <p class="feature-description">
+                Keep color palettes, typography scales, and spacing units in
+                sync across web and mobile platforms with automated versioning.
+              </p>
+              <span class="feature-meta">W3C token format</span>
+            </div>
+
+            <!-- Feature Card 4 -->
+            <div class="feature-card">
+              <div class="feature-icon-wrapper">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect
+                    x="3"
+                    y="11"
+                    width="18"
+                    height="11"
+                    rx="2"
+                    ry="2"
+                  ></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+              </div>
+              <h3 class="feature-title">Enterprise Security</h3>
+              <p class="feature-description">
+                Granular role-based permissions, SOC2 Type II certified
+                infrastructure, and complete end-to-end encryption for team
+                assets.
+              </p>
+              <span class="feature-meta">99.99% uptime guarantee</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== CONTENT SECTION 2: WORKFLOW / ABOUT ==================== -->
+      <section class="section workflow-section" id="workflow">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">How It Works</span>
+            <h2 class="section-title">
+              From initial wireframe to shipped product in 3 steps
+            </h2>
+            <p class="section-subtitle">
+              A unified design-to-development pipeline engineered to keep your
+              team in sync.
+            </p>
+          </div>
+
+          <div class="workflow-steps">
+            <!-- Step 1 -->
+            <div class="step-card">
+              <div class="step-badge">Step 01</div>
+              <h3 class="step-title">Craft on the Infinite Canvas</h3>
+              <p class="step-text">
+                Build layout designs using intelligent autolayout containers,
+                responsive grid guides, and reusable component libraries.
+              </p>
+              <div class="step-tag-row">
+                <span class="mini-tag">CSS Flexbox</span>
+                <span class="mini-tag">Fluid Grids</span>
+              </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step-card">
+              <div class="step-badge">Step 02</div>
+              <h3 class="step-title">Define Tokens & Variables</h3>
+              <p class="step-text">
+                Configure centralized themes with CSS custom properties. Switch
+                between dark and light modes effortlessly with one click.
+              </p>
+              <div class="step-tag-row">
+                <span class="mini-tag">Color Roles</span>
+                <span class="mini-tag">Type Scale</span>
+              </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step-card">
+              <div class="step-badge">Step 03</div>
+              <h3 class="step-title">Deploy with Confidence</h3>
+              <p class="step-text">
+                Generate pixel-perfect static assets and clean, semantic markup
+                ready for direct integration into any production stack.
+              </p>
+              <div class="step-tag-row">
+                <span class="mini-tag">Clean HTML5</span>
+                <span class="mini-tag">Zero Overhead</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== CONTENT SECTION 3: TESTIMONIALS ==================== -->
+      <section class="section testimonials-section" id="testimonials">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">Social Proof</span>
+            <h2 class="section-title">
+              Loved by frontend engineers & design leaders
+            </h2>
+            <p class="section-subtitle">
+              Discover why innovative digital teams rely on Aura Flow every
+              single day.
+            </p>
+          </div>
+
+          <div class="testimonials-grid">
+            <!-- Testimonial 1 -->
+            <div class="testimonial-card">
+              <div class="testimonial-stars" aria-label="5 out of 5 stars">
+                ★★★★★
+              </div>
+              <p class="testimonial-quote">
+                “Aura Flow completely eliminated the friction between our design
+                team and engineers. We shipped our landing pages twice as fast.”
+              </p>
+              <div class="testimonial-author">
+                <div class="avatar avatar-indigo">EL</div>
+                <div class="author-details">
+                  <strong class="author-name">Elena Rostova</strong>
+                  <span class="author-role">Head of Product · Apex Studio</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Testimonial 2 -->
+            <div class="testimonial-card featured">
+              <div class="testimonial-stars" aria-label="5 out of 5 stars">
+                ★★★★★
+              </div>
+              <p class="testimonial-quote">
+                “The automated CSS token generation and responsive layouts look
+                pristine on every single device width we tested. Outstanding
+                product!”
+              </p>
+              <div class="testimonial-author">
+                <div class="avatar avatar-cyan">MK</div>
+                <div class="author-details">
+                  <strong class="author-name">Marcus Vance</strong>
+                  <span class="author-role"
+                    >Lead Frontend Engineer · Stackcraft</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Testimonial 3 -->
+            <div class="testimonial-card">
+              <div class="testimonial-stars" aria-label="5 out of 5 stars">
+                ★★★★★
+              </div>
+              <p class="testimonial-quote">
+                “Clean, fast, and remarkably intuitive. The typography scales
+                and layout grids make modern web styling feel like second
+                nature.”
+              </p>
+              <div class="testimonial-author">
+                <div class="avatar avatar-emerald">SA</div>
+                <div class="author-details">
+                  <strong class="author-name">Sophia Ahmed</strong>
+                  <span class="author-role"
+                    >Design Systems Architect · HyperScale</span
+                  >
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- ==================== CONTENT SECTION 1: FEATURES ==================== -->
-    <section class="section features-section" id="features">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">Core Features</span>
-          <h2 class="section-title">Everything your team needs to build world-class products</h2>
-          <p class="section-subtitle">
-            Eliminate handoff friction with native real-time sync, reactive components, and built-in token compilation.
-          </p>
+      <!-- ==================== CTA CALLOUT BANNER ==================== -->
+      <section class="section cta-banner-section" id="pricing">
+        <div class="container">
+          <div class="cta-banner-box">
+            <div class="cta-glow"></div>
+            <span class="section-tag cta-tag">Ready to Accelerate?</span>
+            <h2 class="cta-title">Start designing better interfaces today</h2>
+            <p class="cta-subtitle">
+              Join thousands of creators using Aura Flow. No credit card
+              required. Free 14-day full access.
+            </p>
+            <div class="cta-actions">
+              <a href="#" class="btn btn-lg btn-primary"
+                >Start Your Free Trial</a
+              >
+              <a href="#features" class="btn btn-lg btn-outline-white"
+                >Explore All Features</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="site-footer">
+      <div class="container footer-container">
+        <div class="footer-top">
+          <!-- Brand Summary Column -->
+          <div class="footer-brand-col">
+            <a href="#" class="brand-logo">
+              <span class="logo-mark">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                  <polyline points="2 17 12 22 22 17"></polyline>
+                  <polyline points="2 12 12 17 22 12"></polyline>
+                </svg>
+              </span>
+              <span class="brand-name">Aura<strong>Flow</strong></span>
+            </a>
+            <p class="footer-desc">
+              Empowering creative teams to design, prototype, and build
+              responsive web applications with precision.
+            </p>
+            <!-- Contact Email -->
+            <p class="footer-contact">
+              <strong>Contact:</strong>
+              <a href="mailto:support@auraflow.io">support@auraflow.io</a>
+            </p>
+          </div>
+
+          <!-- Footer Links Columns -->
+          <div class="footer-nav-col">
+            <h4 class="footer-heading">Product</h4>
+            <ul class="footer-links">
+              <li><a href="#features">Features</a></li>
+              <li><a href="#workflow">Workflow</a></li>
+              <li><a href="#testimonials">Customer Stories</a></li>
+              <li><a href="#pricing">Pricing Plans</a></li>
+              <li><a href="#">Release Notes</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-nav-col">
+            <h4 class="footer-heading">Resources</h4>
+            <ul class="footer-links">
+              <li><a href="#">Documentation</a></li>
+              <li><a href="#">Design Tokens Spec</a></li>
+              <li><a href="#">UI Kit Downloads</a></li>
+              <li><a href="#">Community Forum</a></li>
+              <li><a href="#">Help Center</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-nav-col">
+            <h4 class="footer-heading">Connect</h4>
+            <ul class="footer-links">
+              <li><a href="#">Twitter / X</a></li>
+              <li><a href="#">GitHub</a></li>
+              <li><a href="#">Discord Community</a></li>
+              <li><a href="#">LinkedIn</a></li>
+              <li><a href="#">YouTube Tutorials</a></li>
+            </ul>
+          </div>
         </div>
 
-        <div class="features-grid">
-          <!-- Feature Card 1 -->
-          <div class="feature-card">
-            <div class="feature-icon-wrapper">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                <circle cx="9" cy="7" r="4"></circle>
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+        <!-- Footer Bottom Strip -->
+        <div class="footer-bottom">
+          <p class="footer-copy">
+            &copy; 2026 Aura Flow Inc. All rights reserved. Built with semantic
+            HTML5 &amp; CSS3.
+          </p>
+
+          <!-- Social Media Icons (SVG) -->
+          <div class="footer-social-icons">
+            <!-- Twitter / X -->
+            <a
+              href="#"
+              class="social-icon-link"
+              aria-label="Follow Aura Flow on Twitter"
+            >
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"
+                ></path>
               </svg>
-            </div>
-            <h3 class="feature-title">Real-Time Multiplayer</h3>
-            <p class="feature-description">
-              Simultaneous multi-user collaboration with zero lag. See cursor movements, instant component adjustments, and live commentary.
-            </p>
-            <span class="feature-meta">Sub-50ms sync</span>
-          </div>
-
-          <!-- Feature Card 2 -->
-          <div class="feature-card">
-            <div class="feature-icon-wrapper">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="16 18 22 12 16 6"></polyline>
-                <polyline points="8 6 2 12 8 18"></polyline>
+            </a>
+            <!-- GitHub -->
+            <a
+              href="#"
+              class="social-icon-link"
+              aria-label="Aura Flow GitHub repository"
+            >
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+                ></path>
               </svg>
-            </div>
-            <h3 class="feature-title">Automated Code Export</h3>
-            <p class="feature-description">
-              Directly compile visual layout hierarchies into accessible HTML, modern CSS Grid/Flexbox, or clean component templates.
-            </p>
-            <span class="feature-meta">Zero bloat output</span>
-          </div>
-
-          <!-- Feature Card 3 -->
-          <div class="feature-card">
-            <div class="feature-icon-wrapper">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+            </a>
+            <!-- LinkedIn -->
+            <a
+              href="#"
+              class="social-icon-link"
+              aria-label="Aura Flow LinkedIn profile"
+            >
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+                ></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
               </svg>
-            </div>
-            <h3 class="feature-title">Smart Design Tokens</h3>
-            <p class="feature-description">
-              Keep color palettes, typography scales, and spacing units in sync across web and mobile platforms with automated versioning.
-            </p>
-            <span class="feature-meta">W3C token format</span>
-          </div>
-
-          <!-- Feature Card 4 -->
-          <div class="feature-card">
-            <div class="feature-icon-wrapper">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </a>
+            <!-- Discord -->
+            <a
+              href="#"
+              class="social-icon-link"
+              aria-label="Aura Flow Discord community"
+            >
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M18 6h-4a2 2 0 0 0-2 2v10l4-4h2a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2z"
+                ></path>
+                <path
+                  d="M6 18h4a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z"
+                ></path>
               </svg>
-            </div>
-            <h3 class="feature-title">Enterprise Security</h3>
-            <p class="feature-description">
-              Granular role-based permissions, SOC2 Type II certified infrastructure, and complete end-to-end encryption for team assets.
-            </p>
-            <span class="feature-meta">99.99% uptime guarantee</span>
+            </a>
           </div>
         </div>
       </div>
-    </section>
-
-    <!-- ==================== CONTENT SECTION 2: WORKFLOW / ABOUT ==================== -->
-    <section class="section workflow-section" id="workflow">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">How It Works</span>
-          <h2 class="section-title">From initial wireframe to shipped product in 3 steps</h2>
-          <p class="section-subtitle">
-            A unified design-to-development pipeline engineered to keep your team in sync.
-          </p>
-        </div>
-
-        <div class="workflow-steps">
-          <!-- Step 1 -->
-          <div class="step-card">
-            <div class="step-badge">Step 01</div>
-            <h3 class="step-title">Craft on the Infinite Canvas</h3>
-            <p class="step-text">
-              Build layout designs using intelligent autolayout containers, responsive grid guides, and reusable component libraries.
-            </p>
-            <div class="step-tag-row">
-              <span class="mini-tag">CSS Flexbox</span>
-              <span class="mini-tag">Fluid Grids</span>
-            </div>
-          </div>
-
-          <!-- Step 2 -->
-          <div class="step-card">
-            <div class="step-badge">Step 02</div>
-            <h3 class="step-title">Define Tokens & Variables</h3>
-            <p class="step-text">
-              Configure centralized themes with CSS custom properties. Switch between dark and light modes effortlessly with one click.
-            </p>
-            <div class="step-tag-row">
-              <span class="mini-tag">Color Roles</span>
-              <span class="mini-tag">Type Scale</span>
-            </div>
-          </div>
-
-          <!-- Step 3 -->
-          <div class="step-card">
-            <div class="step-badge">Step 03</div>
-            <h3 class="step-title">Deploy with Confidence</h3>
-            <p class="step-text">
-              Generate pixel-perfect static assets and clean, semantic markup ready for direct integration into any production stack.
-            </p>
-            <div class="step-tag-row">
-              <span class="mini-tag">Clean HTML5</span>
-              <span class="mini-tag">Zero Overhead</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== CONTENT SECTION 3: TESTIMONIALS ==================== -->
-    <section class="section testimonials-section" id="testimonials">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">Social Proof</span>
-          <h2 class="section-title">Loved by frontend engineers & design leaders</h2>
-          <p class="section-subtitle">
-            Discover why innovative digital teams rely on Aura Flow every single day.
-          </p>
-        </div>
-
-        <div class="testimonials-grid">
-          <!-- Testimonial 1 -->
-          <div class="testimonial-card">
-            <div class="testimonial-stars" aria-label="5 out of 5 stars">
-              ★★★★★
-            </div>
-            <p class="testimonial-quote">
-              “Aura Flow completely eliminated the friction between our design team and engineers. We shipped our landing pages twice as fast.”
-            </p>
-            <div class="testimonial-author">
-              <div class="avatar avatar-indigo">EL</div>
-              <div class="author-details">
-                <strong class="author-name">Elena Rostova</strong>
-                <span class="author-role">Head of Product · Apex Studio</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Testimonial 2 -->
-          <div class="testimonial-card featured">
-            <div class="testimonial-stars" aria-label="5 out of 5 stars">
-              ★★★★★
-            </div>
-            <p class="testimonial-quote">
-              “The automated CSS token generation and responsive layouts look pristine on every single device width we tested. Outstanding product!”
-            </p>
-            <div class="testimonial-author">
-              <div class="avatar avatar-cyan">MK</div>
-              <div class="author-details">
-                <strong class="author-name">Marcus Vance</strong>
-                <span class="author-role">Lead Frontend Engineer · Stackcraft</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Testimonial 3 -->
-          <div class="testimonial-card">
-            <div class="testimonial-stars" aria-label="5 out of 5 stars">
-              ★★★★★
-            </div>
-            <p class="testimonial-quote">
-              “Clean, fast, and remarkably intuitive. The typography scales and layout grids make modern web styling feel like second nature.”
-            </p>
-            <div class="testimonial-author">
-              <div class="avatar avatar-emerald">SA</div>
-              <div class="author-details">
-                <strong class="author-name">Sophia Ahmed</strong>
-                <span class="author-role">Design Systems Architect · HyperScale</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== CTA CALLOUT BANNER ==================== -->
-    <section class="section cta-banner-section" id="pricing">
-      <div class="container">
-        <div class="cta-banner-box">
-          <div class="cta-glow"></div>
-          <span class="section-tag cta-tag">Ready to Accelerate?</span>
-          <h2 class="cta-title">Start designing better interfaces today</h2>
-          <p class="cta-subtitle">
-            Join thousands of creators using Aura Flow. No credit card required. Free 14-day full access.
-          </p>
-          <div class="cta-actions">
-            <a href="#" class="btn btn-lg btn-primary">Start Your Free Trial</a>
-            <a href="#features" class="btn btn-lg btn-outline-white">Explore All Features</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- ==================== FOOTER ==================== -->
-  <footer class="site-footer">
-    <div class="container footer-container">
-      <div class="footer-top">
-        <!-- Brand Summary Column -->
-        <div class="footer-brand-col">
-          <a href="#" class="brand-logo">
-            <span class="logo-mark">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-                <polyline points="2 17 12 22 22 17"></polyline>
-                <polyline points="2 12 12 17 22 12"></polyline>
-              </svg>
-            </span>
-            <span class="brand-name">Aura<strong>Flow</strong></span>
-          </a>
-          <p class="footer-desc">
-            Empowering creative teams to design, prototype, and build responsive web applications with precision.
-          </p>
-          <!-- Contact Email -->
-          <p class="footer-contact">
-            <strong>Contact:</strong> <a href="mailto:support@auraflow.io">support@auraflow.io</a>
-          </p>
-        </div>
-
-        <!-- Footer Links Columns -->
-        <div class="footer-nav-col">
-          <h4 class="footer-heading">Product</h4>
-          <ul class="footer-links">
-            <li><a href="#features">Features</a></li>
-            <li><a href="#workflow">Workflow</a></li>
-            <li><a href="#testimonials">Customer Stories</a></li>
-            <li><a href="#pricing">Pricing Plans</a></li>
-            <li><a href="#">Release Notes</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-nav-col">
-          <h4 class="footer-heading">Resources</h4>
-          <ul class="footer-links">
-            <li><a href="#">Documentation</a></li>
-            <li><a href="#">Design Tokens Spec</a></li>
-            <li><a href="#">UI Kit Downloads</a></li>
-            <li><a href="#">Community Forum</a></li>
-            <li><a href="#">Help Center</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-nav-col">
-          <h4 class="footer-heading">Connect</h4>
-          <ul class="footer-links">
-            <li><a href="#">Twitter / X</a></li>
-            <li><a href="#">GitHub</a></li>
-            <li><a href="#">Discord Community</a></li>
-            <li><a href="#">LinkedIn</a></li>
-            <li><a href="#">YouTube Tutorials</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Footer Bottom Strip -->
-      <div class="footer-bottom">
-        <p class="footer-copy">
-          &copy; 2026 Aura Flow Inc. All rights reserved. Built with semantic HTML5 &amp; CSS3.
-        </p>
-
-        <!-- Social Media Icons (SVG) -->
-        <div class="footer-social-icons">
-          <!-- Twitter / X -->
-          <a href="#" class="social-icon-link" aria-label="Follow Aura Flow on Twitter">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
-            </svg>
-          </a>
-          <!-- GitHub -->
-          <a href="#" class="social-icon-link" aria-label="Aura Flow GitHub repository">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-            </svg>
-          </a>
-          <!-- LinkedIn -->
-          <a href="#" class="social-icon-link" aria-label="Aura Flow LinkedIn profile">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-              <rect x="2" y="9" width="4" height="12"></rect>
-              <circle cx="4" cy="4" r="2"></circle>
-            </svg>
-          </a>
-          <!-- Discord -->
-          <a href="#" class="social-icon-link" aria-label="Aura Flow Discord community">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M18 6h-4a2 2 0 0 0-2 2v10l4-4h2a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2z"></path>
-              <path d="M6 18h4a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z"></path>
-            </svg>
-          </a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-</body>
+    </footer>
+  </body>
 </html>
