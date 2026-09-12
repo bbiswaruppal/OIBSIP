@@ -1,6 +1,6 @@
 /**
  * Personal Portfolio - Interactive Scripts
- * Author: Alex Rivera
+ * Author: Biswarup Pal
  * Description: Theme switcher, mobile navigation, scroll-spy, form validation, and clipboard utilities.
  */
 
