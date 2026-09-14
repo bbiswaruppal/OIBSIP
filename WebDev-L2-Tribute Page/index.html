@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A visual and biographical tribute celebrating Dr. A.P.J. Abdul Kalam (1931–2015), aerospace scientist, visionary leader, and the 11th President of India.">
+  <meta name="author" content="Antigravity Tribute Project">
+  <title>Dr. A.P.J. Abdul Kalam · The Missile Man of India | Tribute Page</title>
+
+  <!-- Google Fonts: Dual Font Styles (Serif for headings & quotes, Sans-Serif for body & UI) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Cormorant+Garamond:ital,wght@0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Scroll Progress Indicator -->
+  <div id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Header / Navigation -->
+  <header class="site-header" id="top">
+    <div class="nav-container">
+      <a href="#top" class="brand-logo" aria-label="Home">
+        <span class="logo-symbol">✦</span>
+        <span class="logo-text">APJ Abdul Kalam</span>
+      </a>
+
+      <nav class="site-nav" id="site-nav" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li><a href="#about" class="nav-link">Biography</a></li>
+          <li><a href="#achievements" class="nav-link">Pillars of Impact</a></li>
+          <li><a href="#timeline" class="nav-link">Timeline</a></li>
+          <li><a href="#quotes" class="nav-link">Wisdom</a></li>
+          <li><a href="#books" class="nav-link">Books</a></li>
+          <li><a href="#legacy" class="nav-link">Legacy</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Theme Toggle Button -->
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle dark and light theme" title="Toggle theme">
+          <svg class="theme-icon sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="theme-icon moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <!-- Mobile Menu Toggle -->
+        <button id="mobile-menu-toggle" class="mobile-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation menu">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Wrapper (Standard freeCodeCamp #main convention) -->
+  <main id="main">
+
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="hero">
+      <div class="hero-bg-overlay" aria-hidden="true"></div>
+      <div class="container hero-container">
+        
+        <div class="hero-text-content">
+          <div class="hero-badge">
+            <span class="badge-dot"></span>
+            <span>1931 – 2015 · Bharat Ratna Laureate</span>
+          </div>
+          
+          <!-- Subject Name (Page Title) -->
+          <h1 id="title" class="hero-title">
+            <span class="title-sub">In Memoriam &amp; Honor</span>
+            Dr. A.P.J. Abdul Kalam
+          </h1>
+          
+          <!-- One-line Tagline -->
+          <p class="hero-tagline">
+            "The Missile Man of India Who Ignited a Nation's Dreams and Empowered Millions of Young Minds."
+          </p>
+
+          <p class="hero-lead">
+            Aerospace visionary, pioneer of India's indigenous space launch vehicle and guided missile systems, and the 11th President of India—cherished across generations as <em>"The People's President"</em>.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#about" class="btn btn-primary">
+              <span>Read Biography</span>
+              <svg class="btn-arrow" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+            </a>
+            <a href="#timeline" class="btn btn-secondary">
+              <span>Key Milestones</span>
+            </a>
+          </div>
+
+          <!-- Quick Stats Bar -->
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-value">11th</span>
+              <span class="stat-label">President of India</span>
+            </div>
+            <div class="stat-divider" aria-hidden="true"></div>
+            <div class="stat-item">
+              <span class="stat-value">3</span>
+              <span class="stat-label">Highest Civilian Honors</span>
+            </div>
+            <div class="stat-divider" aria-hidden="true"></div>
+            <div class="stat-item">
+              <span class="stat-value">10M+</span>
+              <span class="stat-label">Students Inspired</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Prominent Royalty-Free Image (freeCodeCamp #img-div / #image / #img-caption) -->
+        <div class="hero-visual">
+          <figure id="img-div" class="hero-figure">
+            <div class="image-frame">
+              <img 
+                id="image" 
+                src="images/kalam-portrait.jpg" 
+                alt="Formal portrait of Dr. A.P.J. Abdul Kalam, 11th President of India and aerospace scientist" 
+                loading="eager"
+                onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/6/6e/A._P._J._Abdul_Kalam.jpg';"
+              >
+              <div class="image-glow" aria-hidden="true"></div>
+            </div>
+            <figcaption id="img-caption" class="hero-figcaption">
+              <span class="caption-title">Dr. Avul Pakir Jainulabdeen Abdul Kalam</span>
+              <span class="caption-desc">Scientist, Statesman, and Humanitarian (1931–2015).</span>
+              <span class="caption-credit">
+                Photo courtesy of 
+                <a href="https://commons.wikimedia.org/wiki/File:A._P._J._Abdul_Kalam.jpg" target="_blank" rel="noopener noreferrer">
+                  Wikimedia Commons
+                </a> (Public Domain / Government of India open data archive).
+              </span>
+            </figcaption>
+          </figure>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- BIOGRAPHY / TRIBUTE SECTION (Distinct Background Color 1) -->
+    <section class="bio-section" id="about">
+      <div class="container">
+        
+        <div class="section-header">
+          <span class="section-pill">Life &amp; Legacy</span>
+          <h2 class="section-title">The Journey of a Visionary</h2>
+          <div class="section-divider" aria-hidden="true"></div>
+          <p class="section-subtitle">
+            From the quiet shores of Rameswaram to the pinnacle of scientific leadership and the Presidency of the world's largest democracy.
+          </p>
+        </div>
+
+        <div id="tribute-info" class="bio-grid">
+          
+          <article class="bio-card">
+            <div class="bio-card-header">
+              <span class="bio-step">01</span>
+              <h3>Humble Beginnings &amp; The Spirit of Resilience</h3>
+            </div>
+            <div class="bio-card-body">
+              <p>
+                Avul Pakir Jainulabdeen Abdul Kalam was born on 15 October 1931 in Rameswaram, a sacred island town off the southeastern coast of Tamil Nadu, India. Growing up in a close-knit Muslim family headed by a boat-owner father and an affectionate mother, his early years were marked by economic hardship. To support his family during difficult post-war times, young Kalam distributed newspapers door-to-door before attending school at dawn. Far from dampening his spirits, this modest upbringing forged an unshakeable work ethic and a deep reverence for secular spiritual values that guided him throughout his entire life.
+              </p>
+              <p>
+                His fascination with the mechanics of flight began in elementary school when his science teacher, Siva Subramania Iyer, took the class to the seashore to demonstrate how birds maneuver their wings and change trajectory. That vivid lesson ignited a lifelong passion for aerodynamics. Kalam pursued a physics degree at Saint Joseph's College in Tiruchirappalli before moving to Madras Institute of Technology (MIT) to study aeronautical engineering, where he worked tirelessly under demanding mentors to realize his dream of mastering flight technologies.
+              </p>
+            </div>
+          </article>
+
+          <article class="bio-card">
+            <div class="bio-card-header">
+              <span class="bio-step">02</span>
+              <h3>Architect of India's Aerospace &amp; Defense Might</h3>
+            </div>
+            <div class="bio-card-body">
+              <p>
+                After graduating from MIT, Kalam joined the Defence Research and Development Organisation (DRDO), designing a small hovercraft prototype before being recruited into the newly formed Indian Space Research Organisation (ISRO) under the visionary Dr. Vikram Sarabhai. There, he took on the mammoth responsibility of Project Director for the Satellite Launch Vehicle (SLV-III). On 18 July 1980, under his steadfast leadership, SLV-III successfully placed the <em>Rohini</em> satellite into near-Earth orbit, elevating India into an elite group of spacefaring nations capable of indigenous orbital launches.
+              </p>
+              <p>
+                Returning to DRDO in the 1980s as Chief Executive of the Integrated Guided Missile Development Programme (IGMDP), Kalam orchestrated a team of brilliant scientists to develop an array of state-of-the-art indigenous defensive missiles—most notably <em>Agni</em> (an intermediate-range ballistic missile) and <em>Prithvi</em> (surface-to-surface tactical missile). His leadership in both space and strategic defense earned him the enduring moniker <strong>"The Missile Man of India"</strong>, while his pivotal role in the 1998 Pokhran-II tests established India's strategic deterrent on the global stage.
+              </p>
+            </div>
+          </article>
+
+          <article class="bio-card">
+            <div class="bio-card-header">
+              <span class="bio-step">03</span>
+              <h3>The People's President: Dignity, Humility &amp; Vision</h3>
+            </div>
+            <div class="bio-card-body">
+              <p>
+                In 2002, Kalam was elected as the 11th President of India with overwhelming cross-party consensus. Transforming what had historically been seen as a ceremonial post, he threw open the gilded corridors of Rashtrapati Bhavan to the common public, especially school children, grassroots inventors, and impoverished citizens. Unfazed by presidential pomp, he adhered to a personal code of monastic simplicity: he owned no real estate, donated his presidential savings to charitable trusts, personally paid for his relatives' modest boarding during visits, and answered hundreds of student emails late into the night.
+              </p>
+              <p>
+                As Head of State, Kalam championed <em>PURA</em> (Providing Urban Amenities to Rural Areas), an economic blueprint aimed at bridging India's rural-urban divide through physical, electronic, and knowledge connectivity. His moral clarity and genuine empathy earned him the widespread affection of over a billion citizens, cementing his status in modern history as <strong>"The People's President"</strong>.
+              </p>
+            </div>
+          </article>
+
+          <article class="bio-card">
+            <div class="bio-card-header">
+              <span class="bio-step">04</span>
+              <h3>A Timeless Teacher &amp; Catalyst for the Youth</h3>
+            </div>
+            <div class="bio-card-body">
+              <p>
+                Upon completing his presidential tenure in 2007, Kalam immediately returned to what he considered his true calling: education and youth engagement. He assumed visiting professorships at the Indian Institute of Management (IIM) Ahmedabad and Shillong, Anna University, and the Indian Institute of Science. Over his lifetime, he personally interacted with more than ten million young boys and girls, imploring them to cultivate courage, foster scientific temper, and dare to dream beyond their present circumstances.
+              </p>
+              <p>
+                On 27 July 2015, while delivering a lecture titled <em>"Creating a Livable Planet Earth"</em> to students at IIM Shillong, Dr. Kalam collapsed on stage doing what he loved most. His sudden departure prompted an outpouring of national and international grief, including seven days of state mourning. His life remains an enduring testament that true greatness lies not in titles or power, but in relentless curiosity, unwavering integrity, and an inexhaustible desire to uplift others.
+              </p>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PILLARS OF IMPACT / ACHIEVEMENTS GRID (Distinct Background Color 2) -->
+    <section class="achievements-section" id="achievements">
+      <div class="container">
+        
+        <div class="section-header">
+          <span class="section-pill">Pioneering Contributions</span>
+          <h2 class="section-title">Pillars of Impact</h2>
+          <div class="section-divider" aria-hidden="true"></div>
+          <p class="section-subtitle">
+            A lifelong dedication to science, technological self-reliance, and societal empowerment.
+          </p>
+        </div>
+
+        <div class="achievements-grid">
+          
+          <div class="achievement-card">
+            <div class="achievement-icon" aria-hidden="true">🚀</div>
+            <span class="achievement-year">1980</span>
+            <h3 class="achievement-title">SLV-III Satellite Launch</h3>
+            <p class="achievement-desc">
+              Served as the visionary Project Director of India's first Satellite Launch Vehicle, successfully placing the Rohini satellite into orbit and establishing India's indigenous space launch capabilities.
+            </p>
+          </div>
+
+          <div class="achievement-card">
+            <div class="achievement-icon" aria-hidden="true">🎯</div>
+            <span class="achievement-year">1983–1999</span>
+            <h3 class="achievement-title">IGMDP Missile Architecture</h3>
+            <p class="achievement-desc">
+              Spearheaded the Integrated Guided Missile Development Programme, bringing together over 20 laboratories to indigenously design, test, and deploy the Agni and Prithvi missile systems.
+            </p>
+          </div>
+
+          <div class="achievement-card">
+            <div class="achievement-icon" aria-hidden="true">🏅</div>
+            <span class="achievement-year">1981, 1990, 1997</span>
+            <h3 class="achievement-title">Highest Civilian Honors</h3>
+            <p class="achievement-desc">
+              Decorated with India's three highest civilian decorations: the Padma Bhushan (1981), Padma Vibhushan (1990), and the prestigious Bharat Ratna (1997) for exceptional service to science and defense.
+            </p>
+          </div>
+
+          <div class="achievement-card">
+            <div class="achievement-icon" aria-hidden="true">🩺</div>
+            <span class="achievement-year">1998</span>
+            <h3 class="achievement-title">The Kalam-Raju Stent</h3>
+            <p class="achievement-desc">
+              Collaborated with cardiologist Dr. Soma Raju to develop an affordable coronary stent made from aerospace-grade alloy, slashing cardiovascular healthcare costs for rural and underprivileged citizens.
+            </p>
+          </div>
+
+          <div class="achievement-card">
+            <div class="achievement-icon" aria-hidden="true">🏛️</div>
+            <span class="achievement-year">2002–2007</span>
+            <h3 class="achievement-title">The People's Presidency</h3>
+            <p class="achievement-desc">
+              Elevated the highest office of India with unprecedented transparency, welcoming over 50,000 students into the Presidential Palace and establishing rural connectivity initiatives like PURA.
+            </p>
+          </div>
+
+          <div class="achievement-card">
+            <div class="achievement-icon" aria-hidden="true">🌱</div>
+            <span class="achievement-year">2011</span>
+            <h3 class="achievement-title">"What Can I Give" Movement</h3>
+            <p class="achievement-desc">
+              Launched a nationwide youth movement championing clean governance, anti-corruption, and active social responsibility, advocating that individual contribution drives societal transformation.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CHRONOLOGICAL TIMELINE SECTION (Interactive & Styled Cards) -->
+    <section class="timeline-section" id="timeline">
+      <div class="container">
+        
+        <div class="section-header">
+          <span class="section-pill">Milestones of Greatness</span>
+          <h2 class="section-title">Chronicle of Achievements</h2>
+          <div class="section-divider" aria-hidden="true"></div>
+          <p class="section-subtitle">
+            Tracing the pivotal moments of Dr. Kalam's 83 extraordinary years of service to science and humanity.
+          </p>
+        </div>
+
+        <!-- Filter Pills for Timeline -->
+        <div class="timeline-filters" role="tablist" aria-label="Filter timeline by era">
+          <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All Eras</button>
+          <button class="filter-btn" data-filter="early" role="tab" aria-selected="false">Early Life</button>
+          <button class="filter-btn" data-filter="defense" role="tab" aria-selected="false">Space &amp; Defense</button>
+          <button class="filter-btn" data-filter="presidency" role="tab" aria-selected="false">Presidency</button>
+          <button class="filter-btn" data-filter="legacy" role="tab" aria-selected="false">Legacy</button>
+        </div>
+
+        <!-- Timeline Container -->
+        <div class="timeline-wrapper">
+          <div class="timeline-line" aria-hidden="true"></div>
+
+          <ol class="timeline-list">
+            
+            <li class="timeline-item" data-category="early">
+              <div class="timeline-marker" aria-hidden="true"></div>
+              <div class="timeline-card">
+                <div class="timeline-meta">
+                  <span class="timeline-date">15 October 1931</span>
+                  <span class="timeline-tag tag-early">Early Life</span>
+                </div>
+                <h3 class="timeline-heading">Birth in Rameswaram</h3>
+                <p class="timeline-text">
+                  Born into a modest Tamil family in Rameswaram, Tamil Nadu. Supported family expenses in childhood by selling morning newspapers while nurturing an early love for mathematics and natural sciences.
+                </p>
+              </div>
+            </li>
+
+            <li class="timeline-item" data-category="early">
+              <div class="timeline-marker" aria-hidden="true"></div>
+              <div class="timeline-card">
+                <div class="timeline-meta">
+                  <span class="timeline-date">1954 – 1960</span>
+                  <span class="timeline-tag tag-early">Education</span>
+                </div>
+                <h3 class="timeline-heading">Academic Pursuit &amp; Aeronautical Engineering</h3>
+                <p class="timeline-text">
+                  Graduated in Physics from Saint Joseph's College, Tiruchirappalli, before securing admission into Madras Institute of Technology (MIT) to specialize in Aeronautical Engineering.
+                </p>
+              </div>
+            </li>
+
+            <li class="timeline-item" data-category="defense">
+              <div class="timeline-marker" aria-hidden="true"></div>
+              <div class="timeline-card">
+                <div class="timeline-meta">
+                  <span class="timeline-date">1969</span>
+                  <span class="timeline-tag tag-defense">Space Exploration</span>
+                </div>
+                <h3 class="timeline-heading">Joined ISRO as Project Director</h3>
+                <p class="timeline-text">
+                  Transferred from DRDO to the Indian Space Research Organisation (ISRO) to lead the ambitious indigenous Satellite Launch Vehicle (SLV-III) project under Dr. Vikram Sarabhai's mentorship.
+                </p>
+              </div>
+            </li>
+
+            <li class="timeline-item" data-category="defense">
+              <div class="timeline-marker" aria-hidden="true"></div>
+              <div class="timeline-card">
+                <div class="timeline-meta">
+                  <span class="timeline-date">18 July 1980</span>
+                  <span class="timeline-tag tag-defense">Space Triumph</span>
+                </div>
+                <h3 class="timeline-heading">SLV-III Orbit Insertion</h3>
+                <p class="timeline-text">
+                  Successfully launched SLV-III from Sriharikota, putting the Rohini satellite into orbit and placing India among the world's few space-faring superpowers.
+                </p>
+              </div>
+            </li>
+
+            <li class="timeline-item" data-category="defense">
+              <div class="timeline-marker" aria-hidden="true"></div>
+              <div class="timeline-card">
+                <div class="timeline-meta">
+                  <span class="timeline-date">1983 – 1990s</span>
+                  <span class="timeline-tag tag-defense">Defense Innovation</span>
+                </div>
+                <h3 class="timeline-heading">Architecting IGMDP &amp; Missile Programs</h3>
+                <p class="timeline-text">
+                  Led the Integrated Guided Missile Development Programme, developing Agni, Prithvi, Akash, and Trishul missiles, cementing his title as the "Missile Man of India".
+                </p>
+              </div>
+            </li>
+
+            <li class="timeline-item" data-category="defense">
+              <div class="timeline-marker" aria-hidden="true"></div>
+              <div class="timeline-card">
+                <div class="timeline-meta">
+                  <span class="timeline-date">May 1998</span>
+                  <span class="timeline-tag tag-defense">National Security</span>
+                </div>
+                <h3 class="timeline-heading">Pokhran-II Strategic Deterrence</h3>
+                <p class="timeline-text">
+                  Coordinated Operation Shakti (Pokhran-II nuclear tests) as Chief Scientific Adviser to the Prime Minister and Secretary of DRDO, establishing national strategic defense parity.
+                </p>
+              </div>
+            </li>
+
+            <li class="timeline-item" data-category="presidency">
+              <div class="timeline-marker" aria-hidden="true"></div>
+              <div class="timeline-card">
+                <div class="timeline-meta">
+                  <span class="timeline-date">25 July 2002</span>
+                  <span class="timeline-tag tag-presidency">Presidency</span>
+                </div>
+                <h3 class="timeline-heading">Sworn in as 11th President of India</h3>
+                <p class="timeline-text">
+                  Elected with massive bipartisan support. Began an unprecedented term focused on youth development, national technology roadmaps, and making the presidency accessible to all citizens.
+                </p>
+              </div>
+            </li>
+
+            <li class="timeline-item" data-category="legacy">
+              <div class="timeline-marker" aria-hidden="true"></div>
+              <div class="timeline-card">
+                <div class="timeline-meta">
+                  <span class="timeline-date">2007 – 2015</span>
+                  <span class="timeline-tag tag-legacy">Mentorship</span>
+                </div>
+                <h3 class="timeline-heading">A Global Educator &amp; Mentor to Millions</h3>
+                <p class="timeline-text">
+                  Returned to teaching at IIMs, IISc, and Anna University. Traveled tirelessly across India and internationally, personally interacting with over ten million young minds.
+                </p>
+              </div>
+            </li>
+
+            <li class="timeline-item" data-category="legacy">
+              <div class="timeline-marker" aria-hidden="true"></div>
+              <div class="timeline-card">
+                <div class="timeline-meta">
+                  <span class="timeline-date">27 July 2015</span>
+                  <span class="timeline-tag tag-legacy">Final Journey</span>
+                </div>
+                <h3 class="timeline-heading">A Fitting Farewell at IIM Shillong</h3>
+                <p class="timeline-text">
+                  Passed away at age 83 while delivering a lecture to students on "Creating a Livable Planet Earth" in Shillong. Honored with full state honors and worldwide mourning.
+                </p>
+              </div>
+            </li>
+
+          </ol>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- DISTINCT QUOTE BLOCK SECTION (Distinct Background Color 3: Deep Jewel Gradient) -->
+    <section class="quotes-section" id="quotes">
+      <div class="quotes-backdrop-glow" aria-hidden="true"></div>
+      <div class="container quotes-container">
+        
+        <div class="quote-card-distinct">
+          <!-- Decorative Quote Glyphs -->
+          <div class="quote-glyph-mark quote-glyph-open" aria-hidden="true">“</div>
+          
+          <blockquote class="quote-content-area" id="quote-display">
+            <p class="quote-text" id="active-quote-text">
+              "Dream, dream, dream. Dreams transform into thoughts and thoughts result in action."
+            </p>
+            <cite class="quote-attribution" id="active-quote-context">
+              <span class="quote-author">— Dr. A.P.J. Abdul Kalam</span>
+              <span class="quote-source">Address to youth and students &middot; New Delhi</span>
+            </cite>
+          </blockquote>
+
+          <div class="quote-glyph-mark quote-glyph-close" aria-hidden="true">”</div>
+
+          <!-- Interactive Quote Switcher Controls -->
+          <div class="quote-controls">
+            <button id="prev-quote" class="quote-nav-btn" aria-label="Previous quote" title="Previous quote">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+
+            <div class="quote-dots" id="quote-dots" role="tablist" aria-label="Select quote slide">
+              <button class="quote-dot active" data-index="0" role="tab" aria-label="Quote 1" aria-selected="true"></button>
+              <button class="quote-dot" data-index="1" role="tab" aria-label="Quote 2" aria-selected="false"></button>
+              <button class="quote-dot" data-index="2" role="tab" aria-label="Quote 3" aria-selected="false"></button>
+              <button class="quote-dot" data-index="3" role="tab" aria-label="Quote 4" aria-selected="false"></button>
+              <button class="quote-dot" data-index="4" role="tab" aria-label="Quote 5" aria-selected="false"></button>
+            </div>
+
+            <button id="next-quote" class="quote-nav-btn" aria-label="Next quote" title="Next quote">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- NOTABLE BOOKS & PUBLICATIONS -->
+    <section class="books-section" id="books">
+      <div class="container">
+        
+        <div class="section-header">
+          <span class="section-pill">Literary Legacy</span>
+          <h2 class="section-title">Seminal Literary Works</h2>
+          <div class="section-divider" aria-hidden="true"></div>
+          <p class="section-subtitle">
+            Books authored by Dr. Kalam that continue to kindle optimism, purpose, and patriotism across the globe.
+          </p>
+        </div>
+
+        <div class="books-grid">
+          
+          <div class="book-card">
+            <div class="book-spine" aria-hidden="true"></div>
+            <div class="book-content">
+              <span class="book-year">1999</span>
+              <h3 class="book-title">Wings of Fire</h3>
+              <span class="book-subtitle">An Autobiography</span>
+              <p class="book-desc">
+                An intimate account of his early struggle against adversity, his mentors, and his role in guiding India's aerospace program to world acclaim.
+              </p>
+            </div>
+          </div>
+
+          <div class="book-card">
+            <div class="book-spine" aria-hidden="true"></div>
+            <div class="book-content">
+              <span class="book-year">1998</span>
+              <h3 class="book-title">India 2020</h3>
+              <span class="book-subtitle">A Vision for the New Millennium</span>
+              <p class="book-desc">
+                An actionable roadmap presenting how India could eliminate poverty and join the ranks of developed nations by harnessing technology and education.
+              </p>
+            </div>
+          </div>
+
+          <div class="book-card">
+            <div class="book-spine" aria-hidden="true"></div>
+            <div class="book-content">
+              <span class="book-year">2002</span>
+              <h3 class="book-title">Ignited Minds</h3>
+              <span class="book-subtitle">Unleashing the Power Within India</span>
+              <p class="book-desc">
+                Dedicated to an intermediate student, this book encourages the youth to break psychological shackles and realize their boundless potential.
+              </p>
+            </div>
+          </div>
+
+          <div class="book-card">
+            <div class="book-spine" aria-hidden="true"></div>
+            <div class="book-content">
+              <span class="book-year">2011</span>
+              <h3 class="book-title">Target 3 Billion</h3>
+              <span class="book-subtitle">Sustainable Development for Rural Earth</span>
+              <p class="book-desc">
+                Proposes comprehensive blueprints and innovative models to lift the three billion people living in global rural areas out of poverty.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- LEGACY & FURTHER RESEARCH (freeCodeCamp #tribute-link requirement) -->
+    <section class="legacy-section" id="legacy">
+      <div class="container legacy-container">
+        
+        <div class="legacy-content">
+          <span class="section-pill">Eternal Inspiration</span>
+          <h2 class="legacy-title">The Philosophy of Simple Living &amp; High Thinking</h2>
+          <p class="legacy-text">
+            Dr. Kalam exemplified that nobility of character is the ultimate metric of human success. In an age often captivated by cynicism, he remained an ardent apostle of hope, self-reliance, and scientific rationality. His life continues to remind us that when scientific rigor joins with profound compassion, humanity flourishes.
+          </p>
+          <div class="legacy-actions">
+            <!-- freeCodeCamp requirement: tribute-link with target="_blank" -->
+            <a 
+              id="tribute-link" 
+              href="https://en.wikipedia.org/wiki/A._P._J._Abdul_Kalam" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="btn btn-primary"
+            >
+              <span>Explore Wikipedia Biography</span>
+              <svg class="btn-external" viewBox="0 0 20 20" fill="currentColor"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path></svg>
+            </a>
+            <a 
+              href="https://www.britannica.com/biography/A-P-J-Abdul-Kalam" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="btn btn-outline"
+            >
+              <span>Read on Britannica</span>
+              <svg class="btn-external" viewBox="0 0 20 20" fill="currentColor"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path></svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER (Distinct Background Color 4: Obsidian Black) -->
+  <footer class="site-footer" id="footer">
+    <div class="container footer-container">
+      
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="footer-logo">✦ Dr. A.P.J. Abdul Kalam Tribute</span>
+          <p class="footer-motto">
+            "Missile Man of India &middot; The People's President &middot; 1931–2015"
+          </p>
+        </div>
+        
+        <div class="footer-nav">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="#about">Biography</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#timeline">Timeline</a></li>
+            <li><a href="#quotes">Wisdom</a></li>
+            <li><a href="#books">Publications</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-sources">
+          <h4>Sources &amp; Credits</h4>
+          <ul>
+            <li>Biographical Research: <a href="https://en.wikipedia.org/wiki/A._P._J._Abdul_Kalam" target="_blank" rel="noopener noreferrer">Wikipedia</a> &amp; <a href="https://www.britannica.com/biography/A-P-J-Abdul-Kalam" target="_blank" rel="noopener noreferrer">Encyclopædia Britannica</a></li>
+            <li>Royalty-Free Imagery: <a href="https://commons.wikimedia.org/wiki/File:A._P._J._Abdul_Kalam.jpg" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a> (Public Domain / GOI)</li>
+            <li>Structure: Modern Responsive HTML5 &amp; CSS3</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy">
+          Designed with deep respect and admiration for Dr. Kalam's indelible legacy.
+        </p>
+        <a href="#top" class="back-to-top" id="back-to-top" aria-label="Back to top of page" title="Return to top">
+          <span>Back to Top</span>
+          <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16"><path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd"></path></svg>
+        </a>
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
