@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TaskFlow · Automated Test Suite</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      background: #0f172a;
+      color: #f8fafc;
+    }
+    h1 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+    .summary-card {
+      background: #1e293b;
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      display: flex;
+      gap: 2rem;
+    }
+    .metric { font-size: 1.25rem; font-weight: bold; }
+    .metric.pass { color: #10b981; }
+    .metric.fail { color: #ef4444; }
+    .test-case {
+      background: #1e293b;
+      padding: 0.75rem 1rem;
+      border-radius: 6px;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-left: 4px solid #64748b;
+    }
+    .test-case.pass { border-left-color: #10b981; }
+    .test-case.fail { border-left-color: #ef4444; }
+    .status-badge {
+      font-size: 0.75rem;
+      font-weight: bold;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+    .pass .status-badge { background: #064e3b; color: #34d399; }
+    .fail .status-badge { background: #7f1d1d; color: #f87171; }
+    #sandbox { display: none; }
+  </style>
+</head>
+<body>
+  <h1>TaskFlow Test Suite</h1>
+  <div class="summary-card">
+    <div>Total: <span id="total-count" class="metric">0</span></div>
+    <div>Passed: <span id="pass-count" class="metric pass">0</span></div>
+    <div>Failed: <span id="fail-count" class="metric fail">0</span></div>
+  </div>
+  <div id="results"></div>
+
+  <!-- Hidden iframe sandbox to test the live app without polluting current scope -->
+  <iframe id="sandbox" src="index.html"></iframe>
+
+  <script>
+    const iframe = document.getElementById('sandbox');
+    const resultsContainer = document.getElementById('results');
+    let total = 0;
+    let passed = 0;
+    let failed = 0;
+
+    function assert(description, condition, extraInfo = '') {
+      total++;
+      const div = document.createElement('div');
+      div.className = 'test-case ' + (condition ? 'pass' : 'fail');
+      div.innerHTML = `
+        <span>${description} ${extraInfo ? '<small style="color:#94a3b8">(' + extraInfo + ')</small>' : ''}</span>
+        <span class="status-badge">${condition ? 'PASS' : 'FAIL'}</span>
+      `;
+      resultsContainer.appendChild(div);
+      if (condition) passed++; else failed++;
+      document.getElementById('total-count').textContent = total;
+      document.getElementById('pass-count').textContent = passed;
+      document.getElementById('fail-count').textContent = failed;
+    }
+
+    iframe.onload = () => {
+      const win = iframe.contentWindow;
+      const doc = iframe.contentDocument;
+
+      setTimeout(() => {
+        try {
+          // Test 1: DOM Elements Rendered
+          assert('Task input and Add button exist', 
+            doc.getElementById('task-input') !== null && doc.getElementById('add-task-btn') !== null);
+
+          assert('Pending and Completed lists exist', 
+            doc.getElementById('pending-list') !== null && doc.getElementById('completed-list') !== null);
+
+          assert('Pending and Completed count badges exist', 
+            doc.getElementById('pending-count-badge') !== null && doc.getElementById('completed-count-badge') !== null);
+
+          // Clear localStorage for deterministic tests
+          win.localStorage.clear();
+          
+          // Trigger task add through DOM
+          const input = doc.getElementById('task-input');
+          const form = doc.getElementById('task-form');
+
+          // Test 2: Validation of Empty Input
+          input.value = '   ';
+          form.dispatchEvent(new win.Event('submit', { bubbles: true, cancelable: true }));
+          const feedback = doc.getElementById('form-feedback');
+          assert('Empty input validation shows error message', 
+            !feedback.classList.contains('hidden') && feedback.textContent.includes('cannot be blank'));
+
+          // Test 3: Add Task Functionality
+          input.value = 'Complete code review for Sprint 4';
+          form.dispatchEvent(new win.Event('submit', { bubbles: true, cancelable: true }));
+
+          const pendingList = doc.getElementById('pending-list');
+          const firstTask = pendingList.querySelector('.task-item');
+          assert('Task appears immediately in Pending list', 
+            firstTask !== null && firstTask.textContent.includes('Complete code review for Sprint 4'));
+
+          const pendingBadge = doc.getElementById('pending-count-badge');
+          assert('Pending count indicator updates dynamically', 
+            pendingBadge.textContent.includes('pending'));
+
+          // Test 4: Timestamp Chip exists
+          const timestampChip = firstTask.querySelector('.timestamp-chip');
+          assert('Timestamp chip is displayed on task showing added time', 
+            timestampChip !== null && timestampChip.textContent.includes('Added:'));
+
+          // Test 5: Mark Complete Toggle
+          const toggleBtn = firstTask.querySelector('[data-action="toggle"]');
+          const taskId = toggleBtn.dataset.id;
+          toggleBtn.click();
+
+          const completedList = doc.getElementById('completed-list');
+          const completedTask = completedList.querySelector(`[data-task-id="${taskId}"]`);
+          assert('Task moves to Completed list when toggled', 
+            completedTask !== null);
+
+          const completedChip = completedTask.querySelector('.completed-chip');
+          assert('Completed task shows Completed timestamp', 
+            completedChip !== null && completedChip.textContent.includes('Completed:'));
+
+          // Test 6: Uncheck Moves Back to Pending
+          const completedToggleBtn = completedTask.querySelector('[data-action="toggle"]');
+          completedToggleBtn.click();
+          const restoredTask = pendingList.querySelector(`[data-task-id="${taskId}"]`);
+          assert('Unchecking completed task moves it back to Pending list', 
+            restoredTask !== null);
+
+          // Test 7: Inline Edit Mode
+          const editBtn = restoredTask.querySelector('.edit-btn');
+          editBtn.click();
+          const editInput = doc.getElementById(`edit-input-${taskId}`);
+          assert('Clicking edit button switches task to inline edit input', 
+            editInput !== null && editInput.value === 'Complete code review for Sprint 4');
+
+          // Edit text and save
+          editInput.value = 'Updated Task Description via Inline Edit';
+          const saveBtn = doc.querySelector(`.save-edit-btn[data-id="${taskId}"]`);
+          saveBtn.click();
+          const updatedTask = pendingList.querySelector(`[data-task-id="${taskId}"]`);
+          assert('Saving inline edit updates task text successfully', 
+            updatedTask !== null && updatedTask.textContent.includes('Updated Task Description via Inline Edit'));
+
+          // Test 8: LocalStorage Persistence
+          const storedData = win.localStorage.getItem('taskflow_tasks_v1');
+          assert('Tasks persist in localStorage', 
+            storedData !== null && storedData.includes('Updated Task Description via Inline Edit'));
+
+          // Test 9: Delete Task & Undo
+          const deleteBtn = updatedTask.querySelector('.delete-btn');
+          deleteBtn.click();
+          
+          setTimeout(() => {
+            const taskAfterDelete = pendingList.querySelector(`[data-task-id="${taskId}"]`);
+            assert('Delete button permanently removes task from list', 
+              taskAfterDelete === null);
+
+            const toastAction = doc.getElementById('toast-action');
+            assert('Toast appears with Undo option after deletion', 
+              !toastAction.classList.contains('hidden'));
+
+            // Delete remaining pending tasks to test empty state
+            const allDeleteBtns = Array.from(pendingList.querySelectorAll('.delete-btn'));
+            allDeleteBtns.forEach(btn => btn.click());
+
+            setTimeout(() => {
+              // Test 10: Empty State
+              const pendingEmpty = doc.getElementById('pending-empty');
+              assert('Empty state displays friendly message when pending list has 0 items', 
+                !pendingEmpty.classList.contains('hidden'));
+
+              console.log(`Test run complete: ${passed}/${total} passed`);
+              window.__TEST_RESULTS__ = { total, passed, failed };
+            }, 500);
+          }, 350);
+
+        } catch (err) {
+          assert('Test suite execution without unhandled exception', false, err.message);
+          console.error(err);
+        }
+      }, 500);
+    };
+  </script>
+</body>
+</html>
