@@ -1,0 +1,443 @@
+/* ==========================================================================
+   Modern Calculator Stylesheet
+   Built with CSS3, CSS Grid, Custom Properties & Modern Responsive Layouts
+   ========================================================================== */
+
+:root {
+  /* Dark Theme (Default) */
+  --bg-gradient: radial-gradient(circle at 50% 20%, #1e2230 0%, #0d111a 100%);
+  --card-bg: rgba(22, 27, 39, 0.85);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --card-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.6), 0 0 30px rgba(99, 102, 241, 0.1);
+  
+  --display-bg: rgba(13, 17, 26, 0.7);
+  --display-border: rgba(255, 255, 255, 0.05);
+  --text-main: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-dimmed: #64748b;
+  
+  /* Buttons */
+  --btn-num-bg: rgba(30, 41, 59, 0.6);
+  --btn-num-hover: rgba(51, 65, 85, 0.8);
+  --btn-num-active: rgba(71, 85, 105, 0.9);
+  --btn-num-text: #f1f5f9;
+  
+  --btn-fn-bg: rgba(51, 65, 85, 0.5);
+  --btn-fn-hover: rgba(71, 85, 105, 0.7);
+  --btn-fn-text: #cbd5e1;
+  
+  --btn-op-bg: rgba(99, 102, 241, 0.18);
+  --btn-op-hover: rgba(99, 102, 241, 0.3);
+  --btn-op-active: rgba(99, 102, 241, 0.45);
+  --btn-op-text: #818cf8;
+  --btn-op-border: rgba(99, 102, 241, 0.3);
+  --btn-op-selected: #6366f1;
+  --btn-op-selected-text: #ffffff;
+  
+  --btn-equals-bg: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+  --btn-equals-hover: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%);
+  --btn-equals-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+  --btn-equals-text: #ffffff;
+  
+  --error-color: #f87171;
+  --error-bg: rgba(239, 68, 68, 0.1);
+  
+  --radius-card: 28px;
+  --radius-btn: 18px;
+  --radius-display: 20px;
+  
+  --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+[data-theme="light"] {
+  --bg-gradient: radial-gradient(circle at 50% 20%, #e2e8f0 0%, #cbd5e1 100%);
+  --card-bg: rgba(255, 255, 255, 0.85);
+  --card-border: rgba(255, 255, 255, 0.8);
+  --card-shadow: 0 25px 50px -12px rgba(100, 116, 139, 0.25), 0 0 25px rgba(99, 102, 241, 0.08);
+  
+  --display-bg: rgba(241, 245, 249, 0.85);
+  --display-border: rgba(203, 213, 225, 0.6);
+  --text-main: #0f172a;
+  --text-secondary: #64748b;
+  --text-dimmed: #94a3b8;
+  
+  --btn-num-bg: rgba(255, 255, 255, 0.9);
+  --btn-num-hover: rgba(241, 245, 249, 1);
+  --btn-num-active: rgba(226, 232, 240, 1);
+  --btn-num-text: #1e293b;
+  
+  --btn-fn-bg: rgba(241, 245, 249, 0.85);
+  --btn-fn-hover: rgba(226, 232, 240, 1);
+  --btn-fn-text: #475569;
+  
+  --btn-op-bg: rgba(99, 102, 241, 0.12);
+  --btn-op-hover: rgba(99, 102, 241, 0.22);
+  --btn-op-active: rgba(99, 102, 241, 0.32);
+  --btn-op-text: #4f46e5;
+  --btn-op-border: rgba(99, 102, 241, 0.25);
+  --btn-op-selected: #4f46e5;
+  --btn-op-selected-text: #ffffff;
+  
+  --btn-equals-bg: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%);
+  --btn-equals-hover: linear-gradient(135deg, #4338ca 0%, #3730a3 100%);
+  --btn-equals-shadow: 0 4px 15px rgba(79, 70, 229, 0.35);
+  --btn-equals-text: #ffffff;
+}
+
+/* ==========================================================================
+   Base & Reset
+   ========================================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--bg-gradient);
+  font-family: var(--font-sans);
+  color: var(--text-main);
+  padding: 1.5rem;
+  transition: background 0.4s ease, color 0.4s ease;
+  overflow-x: hidden;
+}
+
+.app-container {
+  width: 100%;
+  max-width: 380px;
+  display: flex;
+  justify-content: center;
+}
+
+/* ==========================================================================
+   Calculator Card
+   ========================================================================== */
+
+.calculator-card {
+  width: 100%;
+  background: var(--card-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--card-shadow);
+  padding: 1.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+/* ==========================================================================
+   Header
+   ========================================================================== */
+
+.calculator-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0.25rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.brand-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #6366f1;
+  box-shadow: 0 0 10px #6366f1;
+}
+
+.brand-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--text-secondary);
+}
+
+.theme-toggle-btn {
+  background: var(--btn-fn-bg);
+  border: 1px solid var(--card-border);
+  color: var(--text-secondary);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.theme-toggle-btn:hover {
+  background: var(--btn-fn-hover);
+  color: var(--text-main);
+  transform: rotate(15deg) scale(1.05);
+}
+
+.theme-toggle-btn:focus-visible {
+  outline: 2px solid var(--btn-op-selected);
+  outline-offset: 2px;
+}
+
+/* Toggle sun/moon icons based on theme */
+.sun-icon {
+  display: none;
+}
+.moon-icon {
+  display: block;
+}
+
+[data-theme="light"] .sun-icon {
+  display: block;
+}
+[data-theme="light"] .moon-icon {
+  display: none;
+}
+
+/* ==========================================================================
+   Display Screen
+   ========================================================================== */
+
+.display-container {
+  background: var(--display-bg);
+  border: 1px solid var(--display-border);
+  border-radius: var(--radius-display);
+  padding: 1.25rem 1.25rem 1rem 1.25rem;
+  min-height: 110px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  gap: 0.35rem;
+  overflow: hidden;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.display-container.error-state {
+  border-color: var(--error-color);
+  background: var(--error-bg);
+  animation: shake 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+@keyframes shake {
+  10%, 90% { transform: translate3d(-1px, 0, 0); }
+  20%, 80% { transform: translate3d(2px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-3px, 0, 0); }
+  40%, 60% { transform: translate3d(3px, 0, 0); }
+}
+
+.previous-operand {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--text-secondary);
+  min-height: 1.4rem;
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none; /* Firefox */
+  letter-spacing: 0.03em;
+}
+
+.previous-operand::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+.current-operand {
+  font-family: var(--font-mono);
+  font-size: 2.35rem;
+  font-weight: 600;
+  color: var(--text-main);
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none;
+  letter-spacing: -0.02em;
+  transition: font-size 0.15s ease, color 0.2s ease;
+}
+
+.current-operand::-webkit-scrollbar {
+  display: none;
+}
+
+.current-operand.error-text {
+  font-family: var(--font-sans);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--error-color);
+}
+
+.current-operand.small-text {
+  font-size: 1.7rem;
+}
+
+.current-operand.tiny-text {
+  font-size: 1.3rem;
+}
+
+/* ==========================================================================
+   Keypad Grid (CSS Grid Alignment)
+   ========================================================================== */
+
+.keypad-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+/* Base button */
+.btn {
+  appearance: none;
+  border: none;
+  outline: none;
+  height: 60px;
+  border-radius: var(--radius-btn);
+  font-family: var(--font-sans);
+  font-size: 1.3rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.12s cubic-bezier(0.4, 0, 0.2, 1),
+              background 0.2s ease,
+              box-shadow 0.2s ease,
+              color 0.2s ease;
+}
+
+.btn:active, .btn.is-pressed {
+  transform: scale(0.93);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--btn-op-selected);
+  outline-offset: 2px;
+}
+
+/* Numeric Buttons */
+.btn-number {
+  background: var(--btn-num-bg);
+  color: var(--btn-num-text);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-number:hover {
+  background: var(--btn-num-hover);
+}
+
+.btn-number:active, .btn-number.is-pressed {
+  background: var(--btn-num-active);
+}
+
+/* Function Buttons (C, Backspace, %, ±) */
+.btn-function {
+  background: var(--btn-fn-bg);
+  color: var(--btn-fn-text);
+  border: 1px solid var(--card-border);
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.btn-function:hover {
+  background: var(--btn-fn-hover);
+  color: var(--text-main);
+}
+
+/* Operator Buttons (+, −, ×, ÷) */
+.btn-operator {
+  background: var(--btn-op-bg);
+  color: var(--btn-op-text);
+  border: 1px solid var(--btn-op-border);
+  font-size: 1.45rem;
+  font-weight: 600;
+}
+
+.btn-operator:hover {
+  background: var(--btn-op-hover);
+  color: var(--text-main);
+}
+
+.btn-operator:active, .btn-operator.is-pressed {
+  background: var(--btn-op-active);
+}
+
+/* Operator active / locked state */
+.btn-operator.active-operator {
+  background: var(--btn-op-selected);
+  color: var(--btn-op-selected-text);
+  box-shadow: 0 0 16px rgba(99, 102, 241, 0.5);
+  border-color: transparent;
+}
+
+/* Equals Button */
+.btn-equals {
+  background: var(--btn-equals-bg);
+  color: var(--btn-equals-text);
+  font-size: 1.55rem;
+  font-weight: 600;
+  box-shadow: var(--btn-equals-shadow);
+}
+
+.btn-equals:hover {
+  background: var(--btn-equals-hover);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.calculator-footer {
+  text-align: center;
+  font-size: 0.72rem;
+  color: var(--text-dimmed);
+  line-height: 1.4;
+  padding-top: 0.25rem;
+}
+
+/* ==========================================================================
+   Responsive Adjustments
+   ========================================================================== */
+
+@media (max-width: 400px) {
+  body {
+    padding: 0.75rem;
+  }
+
+  .calculator-card {
+    padding: 1.25rem 1rem;
+    gap: 1rem;
+    border-radius: 22px;
+  }
+
+  .keypad-grid {
+    gap: 8px;
+  }
+
+  .btn {
+    height: 54px;
+    font-size: 1.15rem;
+    border-radius: 14px;
+  }
+
+  .current-operand {
+    font-size: 2rem;
+  }
+}

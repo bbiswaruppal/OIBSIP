@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculator Automated Test Suite</title>
+</head>
+<body>
+  <div id="test-output">Running tests...</div>
+
+  <!-- Mock DOM elements needed by script.js / Calculator class -->
+  <div id="previous-operand"></div>
+  <div id="current-operand">0</div>
+  <div class="display-container"></div>
+
+  <!-- Mock keypad buttons -->
+  <div class="keypad-grid">
+    <button class="btn btn-function" data-action="clear">C</button>
+    <button class="btn btn-function" data-action="delete">⌫</button>
+    <button class="btn btn-function" data-action="percent">%</button>
+    <button class="btn btn-operator" data-operator="÷">÷</button>
+    <button class="btn btn-number" data-number="7">7</button>
+    <button class="btn btn-number" data-number="8">8</button>
+    <button class="btn btn-number" data-number="9">9</button>
+    <button class="btn btn-operator" data-operator="×">×</button>
+    <button class="btn btn-number" data-number="4">4</button>
+    <button class="btn btn-number" data-number="5">5</button>
+    <button class="btn btn-number" data-number="6">6</button>
+    <button class="btn btn-operator" data-operator="−">−</button>
+    <button class="btn btn-number" data-number="1">1</button>
+    <button class="btn btn-number" data-number="2">2</button>
+    <button class="btn btn-number" data-number="3">3</button>
+    <button class="btn btn-operator" data-operator="+">+</button>
+    <button class="btn btn-function" data-action="negate">±</button>
+    <button class="btn btn-number" data-number="0">0</button>
+    <button class="btn btn-number" data-number=".">.</button>
+    <button class="btn btn-equals" data-action="equals">=</button>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const prevEl = document.getElementById('previous-operand');
+      const currEl = document.getElementById('current-operand');
+      const dispContainer = document.querySelector('.display-container');
+
+      const calc = new Calculator(prevEl, currEl, dispContainer);
+
+      const results = [];
+      function assert(name, condition, details = '') {
+        if (condition) {
+          results.push(`PASS: ${name}`);
+        } else {
+          results.push(`FAIL: ${name} - Details: ${details}`);
+        }
+      }
+
+      // Test 1: Initial state
+      calc.clear();
+      calc.updateDisplay();
+      assert('Initial display is 0', currEl.textContent === '0', `Got ${currEl.textContent}`);
+
+      // Test 2: Basic Addition (7 + 8 = 15)
+      calc.clear();
+      calc.appendNumber('7');
+      calc.chooseOperation('+');
+      calc.appendNumber('8');
+      calc.equals();
+      calc.updateDisplay();
+      assert('Addition: 7 + 8 = 15', currEl.textContent === '15', `Got ${currEl.textContent}`);
+
+      // Test 3: Subtraction (25 - 9 = 16)
+      calc.clear();
+      calc.appendNumber('2');
+      calc.appendNumber('5');
+      calc.chooseOperation('−');
+      calc.appendNumber('9');
+      calc.equals();
+      calc.updateDisplay();
+      assert('Subtraction: 25 - 9 = 16', currEl.textContent === '16', `Got ${currEl.textContent}`);
+
+      // Test 4: Multiplication (6 * 7 = 42)
+      calc.clear();
+      calc.appendNumber('6');
+      calc.chooseOperation('×');
+      calc.appendNumber('7');
+      calc.equals();
+      calc.updateDisplay();
+      assert('Multiplication: 6 × 7 = 42', currEl.textContent === '42', `Got ${currEl.textContent}`);
+
+      // Test 5: Division (144 / 12 = 12)
+      calc.clear();
+      calc.appendNumber('1');
+      calc.appendNumber('4');
+      calc.appendNumber('4');
+      calc.chooseOperation('÷');
+      calc.appendNumber('1');
+      calc.appendNumber('2');
+      calc.equals();
+      calc.updateDisplay();
+      assert('Division: 144 ÷ 12 = 12', currEl.textContent === '12', `Got ${currEl.textContent}`);
+
+      // Test 6: Operator chaining (5 + 3 * 2 = 16)
+      calc.clear();
+      calc.appendNumber('5');
+      calc.chooseOperation('+');
+      calc.appendNumber('3');
+      calc.chooseOperation('×'); // should compute 5 + 3 = 8
+      assert('Chaining step 1 computes intermediate 8', calc.previousOperand === '8', `Got ${calc.previousOperand}`);
+      calc.appendNumber('2');
+      calc.equals();
+      calc.updateDisplay();
+      assert('Operator chaining final: 5 + 3 × 2 = 16', currEl.textContent === '16', `Got ${currEl.textContent}`);
+
+      // Test 7: Division by zero prevention
+      calc.clear();
+      calc.appendNumber('9');
+      calc.chooseOperation('÷');
+      calc.appendNumber('0');
+      calc.equals();
+      calc.updateDisplay();
+      assert('Division by zero displays error', calc.isError === true && currEl.textContent === 'Cannot divide by 0', `Got ${currEl.textContent}`);
+
+      // Test 8: Reset after error on next digit
+      calc.appendNumber('4');
+      calc.updateDisplay();
+      assert('Next digit resets error cleanly', calc.isError === false && currEl.textContent === '4', `Got ${currEl.textContent}`);
+
+      // Test 9: Decimal point handling (prevent multiple decimals)
+      calc.clear();
+      calc.appendNumber('5');
+      calc.appendNumber('.');
+      calc.appendNumber('2');
+      calc.appendNumber('.');
+      calc.appendNumber('3');
+      calc.updateDisplay();
+      assert('Disallow multiple decimals: 5.2.3 -> 5.23', currEl.textContent === '5.23', `Got ${currEl.textContent}`);
+
+      // Test 10: Starting with decimal point
+      calc.clear();
+      calc.appendNumber('.');
+      calc.appendNumber('5');
+      calc.updateDisplay();
+      assert('Start with decimal produces 0.5', currEl.textContent === '0.5', `Got ${currEl.textContent}`);
+
+      // Test 11: Backspace / Delete
+      calc.clear();
+      calc.appendNumber('1');
+      calc.appendNumber('2');
+      calc.appendNumber('3');
+      calc.delete();
+      calc.updateDisplay();
+      assert('Backspace 123 -> 12', currEl.textContent === '12', `Got ${currEl.textContent}`);
+      calc.delete();
+      calc.delete();
+      calc.updateDisplay();
+      assert('Backspace to zero resets to 0', currEl.textContent === '0', `Got ${currEl.textContent}`);
+
+      // Test 12: Clear (C) button
+      calc.appendNumber('9');
+      calc.appendNumber('9');
+      calc.chooseOperation('+');
+      calc.clear();
+      calc.updateDisplay();
+      assert('Clear button resets all fields', currEl.textContent === '0' && prevEl.textContent === '' && calc.operation === null, `curr: ${currEl.textContent}, prev: ${prevEl.textContent}`);
+
+      // Test 13: Floating-point precision (0.1 + 0.2 = 0.3)
+      calc.clear();
+      calc.appendNumber('0');
+      calc.appendNumber('.');
+      calc.appendNumber('1');
+      calc.chooseOperation('+');
+      calc.appendNumber('0');
+      calc.appendNumber('.');
+      calc.appendNumber('2');
+      calc.equals();
+      calc.updateDisplay();
+      assert('Floating point fix: 0.1 + 0.2 = 0.3', currEl.textContent === '0.3', `Got ${currEl.textContent}`);
+
+      // Test 14: Negate (±)
+      calc.clear();
+      calc.appendNumber('4');
+      calc.appendNumber('2');
+      calc.negate();
+      calc.updateDisplay();
+      assert('Negate 42 -> -42', currEl.textContent === '-42', `Got ${currEl.textContent}`);
+      calc.negate();
+      calc.updateDisplay();
+      assert('Negate -42 back to 42', currEl.textContent === '42', `Got ${currEl.textContent}`);
+
+      // Test 15: Percent (%)
+      calc.clear();
+      calc.appendNumber('5');
+      calc.appendNumber('0');
+      calc.percent();
+      calc.updateDisplay();
+      assert('Percent 50 -> 0.5', currEl.textContent === '0.5', `Got ${currEl.textContent}`);
+
+      // Render results
+      const allPassed = results.every(r => r.startsWith('PASS'));
+      const outputDiv = document.getElementById('test-output');
+      outputDiv.innerHTML = `<h2>${allPassed ? 'ALL TESTS PASSED' : 'SOME TESTS FAILED'}</h2><pre>${results.join('\n')}</pre>`;
+      document.title = allPassed ? 'ALL_TESTS_PASSED' : 'TESTS_FAILED';
+    });
+  </script>
+</body>
+</html>

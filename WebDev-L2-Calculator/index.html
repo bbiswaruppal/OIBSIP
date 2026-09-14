@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A modern, fully functional browser-based calculator built with HTML5, CSS Grid, and Vanilla JavaScript.">
+  <title>Modern Calculator</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <main class="app-container">
+    <div class="calculator-card" role="region" aria-label="Calculator">
+      <!-- Header with branding and theme toggle -->
+      <header class="calculator-header">
+        <div class="brand">
+          <span class="brand-dot"></span>
+          <span class="brand-title">CALC</span>
+        </div>
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle light/dark theme" title="Toggle theme (T)">
+          <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </header>
+
+      <!-- Calculator Display Screen -->
+      <section class="display-container" aria-label="Calculator display">
+        <div class="previous-operand" id="previous-operand" aria-live="polite" aria-atomic="true"></div>
+        <div class="current-operand" id="current-operand" aria-live="polite" aria-atomic="true">0</div>
+      </section>
+
+      <!-- Button Grid -->
+      <section class="keypad-grid" aria-label="Calculator keypad">
+        <!-- Row 1 -->
+        <button type="button" class="btn btn-function" data-action="clear" aria-label="Clear all" title="Clear (Escape)">C</button>
+        <button type="button" class="btn btn-function" data-action="delete" aria-label="Backspace delete" title="Backspace (⌫)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0 2-2z"></path>
+            <line x1="18" y1="9" x2="12" y2="15"></line>
+            <line x1="12" y1="9" x2="18" y2="15"></line>
+          </svg>
+        </button>
+        <button type="button" class="btn btn-function" data-action="percent" aria-label="Percent" title="Percent (%)">%</button>
+        <button type="button" class="btn btn-operator" data-operator="÷" aria-label="Divide by" title="Divide (/)">÷</button>
+
+        <!-- Row 2 -->
+        <button type="button" class="btn btn-number" data-number="7">7</button>
+        <button type="button" class="btn btn-number" data-number="8">8</button>
+        <button type="button" class="btn btn-number" data-number="9">9</button>
+        <button type="button" class="btn btn-operator" data-operator="×" aria-label="Multiply by" title="Multiply (*)">×</button>
+
+        <!-- Row 3 -->
+        <button type="button" class="btn btn-number" data-number="4">4</button>
+        <button type="button" class="btn btn-number" data-number="5">5</button>
+        <button type="button" class="btn btn-number" data-number="6">6</button>
+        <button type="button" class="btn btn-operator" data-operator="−" aria-label="Subtract" title="Subtract (-)">−</button>
+
+        <!-- Row 4 -->
+        <button type="button" class="btn btn-number" data-number="1">1</button>
+        <button type="button" class="btn btn-number" data-number="2">2</button>
+        <button type="button" class="btn btn-number" data-number="3">3</button>
+        <button type="button" class="btn btn-operator" data-operator="+" aria-label="Add" title="Add (+)">+</button>
+
+        <!-- Row 5 -->
+        <button type="button" class="btn btn-function" data-action="negate" aria-label="Toggle positive or negative" title="Negate (±)">±</button>
+        <button type="button" class="btn btn-number" data-number="0">0</button>
+        <button type="button" class="btn btn-number" data-number="." aria-label="Decimal point">.</button>
+        <button type="button" class="btn btn-equals" data-action="equals" aria-label="Equals" title="Calculate (Enter or =)">=</button>
+      </section>
+
+      <!-- Keyboard shortcuts hint -->
+      <footer class="calculator-footer">
+        <span>Keyboard enabled: 0-9, +, -, *, /, Enter, Backspace, Esc</span>
+      </footer>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
