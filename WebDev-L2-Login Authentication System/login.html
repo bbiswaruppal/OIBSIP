@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Authentication System</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <main class="auth-container">
+    <div class="auth-card">
+      <header class="auth-header">
+        <div class="auth-logo" aria-hidden="true">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+          </svg>
+        </div>
+        <h1 class="auth-title">Welcome Back</h1>
+        <p class="auth-subtitle">Sign in to access your protected dashboard</p>
+      </header>
+
+      <!-- Alert Notification Banner for credential errors or redirect notices -->
+      <div id="alertBox" class="alert-box" role="alert" aria-live="polite">
+        <svg class="alert-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path id="alertIconPath" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <span id="alertMessage" class="alert-content"></span>
+      </div>
+
+      <!-- Login Form -->
+      <form id="loginForm" novalidate>
+        <!-- Username or Email Field -->
+        <div class="form-group">
+          <label for="identifierInput" class="form-label">Username or Email</label>
+          <div class="input-wrapper">
+            <input 
+              type="text" 
+              id="identifierInput" 
+              name="identifier" 
+              class="form-input" 
+              placeholder="Enter your username or email" 
+              autocomplete="username"
+              required
+            >
+          </div>
+          <p id="identifierError" class="field-error-msg"></p>
+        </div>
+
+        <!-- Password Field -->
+        <div class="form-group">
+          <label for="passwordInput" class="form-label">Password</label>
+          <div class="input-wrapper">
+            <input 
+              type="password" 
+              id="passwordInput" 
+              name="password" 
+              class="form-input has-icon-end" 
+              placeholder="Enter your password" 
+              autocomplete="current-password"
+              required
+            >
+            <button type="button" class="toggle-password-btn" id="togglePasswordBtn" aria-label="Toggle password visibility">
+              <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+              </svg>
+            </button>
+          </div>
+          <p id="passwordError" class="field-error-msg"></p>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" id="loginBtn" class="btn-primary">
+          <span>Login</span>
+        </button>
+      </form>
+
+      <footer class="auth-footer">
+        Don't have an account? <a href="register.html">Register here</a>
+      </footer>
+    </div>
+  </main>
+
+  <script src="js/crypto.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/login.js"></script>
+</body>
+</html>

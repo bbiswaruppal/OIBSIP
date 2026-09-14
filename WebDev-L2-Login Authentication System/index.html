@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirecting - Authentication System</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script>
+    (function() {
+      try {
+        var rawSession = localStorage.getItem('auth_system_session') || sessionStorage.getItem('auth_system_session');
+        if (rawSession) {
+          window.location.replace('dashboard.html');
+        } else {
+          window.location.replace('login.html');
+        }
+      } catch (e) {
+        window.location.replace('login.html');
+      }
+    })();
+  </script>
+</head>
+<body>
+  <main class="auth-container">
+    <div class="auth-card" style="text-align: center;">
+      <h2 class="auth-title">Redirecting...</h2>
+      <p class="auth-subtitle" style="margin-bottom: 20px;">Checking authentication status</p>
+      <p style="font-size: 0.9rem; color: var(--text-muted);">
+        If you are not redirected automatically, please choose:
+      </p>
+      <div style="display: flex; gap: 12px; justify-content: center; margin-top: 16px;">
+        <a href="login.html" class="btn-primary" style="text-decoration: none; max-width: 140px;">Log In</a>
+        <a href="register.html" class="btn-secondary" style="text-decoration: none; max-width: 140px;">Register</a>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

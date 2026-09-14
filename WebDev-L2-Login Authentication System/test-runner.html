@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Automated Test Suite - Authentication System</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .test-container {
+      max-width: 800px;
+      width: 100%;
+    }
+    .test-card {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--card-border);
+    }
+    .test-summary {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .badge {
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-weight: 700;
+      font-size: 0.88rem;
+    }
+    .badge-pass { background: #dcfce7; color: #15803d; }
+    .badge-fail { background: #fee2e2; color: #b91c1c; }
+    .test-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .test-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      border-radius: var(--radius-md);
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      font-size: 0.92rem;
+    }
+    .test-item.pass {
+      border-left: 4px solid var(--success);
+    }
+    .test-item.fail {
+      border-left: 4px solid var(--danger);
+      background: #fff5f5;
+    }
+    .test-name {
+      font-weight: 500;
+      color: #1e293b;
+    }
+    .test-status {
+      font-weight: 700;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .test-status.pass { color: var(--success); }
+    .test-status.fail { color: var(--danger); }
+    .test-details {
+      font-size: 0.8rem;
+      color: #64748b;
+      margin-top: 4px;
+    }
+  </style>
+</head>
+<body>
+  <main class="test-container">
+    <div class="test-card">
+      <header style="margin-bottom: 20px;">
+        <h1 style="font-size: 1.5rem; font-weight: 700;">Authentication System Test Suite</h1>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Automated verification of security, hashing, validation, and session behavior.</p>
+      </header>
+
+      <div class="test-summary">
+        <div id="badgePass" class="badge badge-pass">Passing: 0</div>
+        <div id="badgeFail" class="badge badge-fail">Failing: 0</div>
+        <div id="badgeTotal" class="badge" style="background: #f1f5f9; color: #475569;">Total: 0</div>
+      </div>
+
+      <div id="testResults" class="test-list">
+        <p style="color: #64748b;">Running tests...</p>
+      </div>
+
+      <div style="display: flex; gap: 12px; margin-top: 16px;">
+        <button id="rerunBtn" class="btn-primary" style="max-width: 180px;">Rerun Tests</button>
+        <a href="login.html" class="btn-secondary" style="text-decoration: none;">Go to Login</a>
+        <a href="register.html" class="btn-secondary" style="text-decoration: none;">Go to Register</a>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/crypto.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    async function runTestSuite() {
+      const resultsContainer = document.getElementById('testResults');
+      resultsContainer.innerHTML = '';
+
+      let passed = 0;
+      let failed = 0;
+      const tests = [];
+
+      function assert(name, condition, details = '') {
+        tests.push({ name, pass: Boolean(condition), details });
+        if (condition) passed++;
+        else failed++;
+      }
+
+      // Backup existing storage to avoid overwriting real user testing
+      const backupUsers = localStorage.getItem('auth_system_users');
+      const backupSession = localStorage.getItem('auth_system_session');
+
+      try {
+        // Reset test environment
+        localStorage.removeItem('auth_system_users');
+        localStorage.removeItem('auth_system_session');
+        sessionStorage.removeItem('auth_system_session');
+
+        // 1. Password validation tests
+        const checkShort = AppAuth.validatePassword('abc1');
+        assert('Password validation: Rejects password shorter than 8 characters', !checkShort.isValid && !checkShort.hasMinLength);
+
+        const checkNoNum = AppAuth.validatePassword('abcdefgh');
+        assert('Password validation: Rejects password without numbers', !checkNoNum.isValid && !checkNoNum.hasNumber);
+
+        const checkValid = AppAuth.validatePassword('SecretPass1');
+        assert('Password validation: Accepts password with >=8 chars and >=1 number', checkValid.isValid && checkValid.hasMinLength && checkValid.hasNumber);
+
+        // 2. Cryptographic hashing & salting tests
+        const salt1 = AppCrypto.generateSalt(16);
+        const salt2 = AppCrypto.generateSalt(16);
+        assert('Crypto: generateSalt produces random, distinct salts', salt1 !== salt2 && salt1.length === 32);
+
+        const hash1 = await AppCrypto.hashPassword('Secret123', salt1);
+        const hash2 = await AppCrypto.hashPassword('Secret123', salt1);
+        assert('Crypto: hashPassword produces deterministic output for same password and salt', hash1 === hash2 && hash1.length === 64);
+
+        const hashDifferentSalt = await AppCrypto.hashPassword('Secret123', salt2);
+        assert('Crypto: Different salts yield different hashes for identical passwords', hash1 !== hashDifferentSalt);
+
+        // 3. Form validation (Empty submissions)
+        const emptyUserReg = await AppAuth.register({ username: '', email: 'test@example.com', password: 'Password1' });
+        assert('Registration: Rejects empty username submission', !emptyUserReg.success && emptyUserReg.error.includes('Username'));
+
+        const emptyEmailReg = await AppAuth.register({ username: 'user1', email: '', password: 'Password1' });
+        assert('Registration: Rejects empty email submission', !emptyEmailReg.success && emptyEmailReg.error.includes('Email'));
+
+        const emptyPassReg = await AppAuth.register({ username: 'user1', email: 'test@example.com', password: '' });
+        assert('Registration: Rejects empty password submission', !emptyPassReg.success && emptyPassReg.error.includes('Password'));
+
+        // 4. Successful registration & plain-text password prevention
+        const regResult = await AppAuth.register({ username: 'tester1', email: 'tester1@domain.com', password: 'Password99' });
+        assert('Registration: Successfully registers valid user', regResult.success && regResult.user.username === 'tester1');
+
+        const storedUsers = AppStorage.getUsers();
+        const storedUser = storedUsers.find(u => u.username === 'tester1');
+        const isPlaintextStored = 'password' in storedUser || storedUser.passwordHash === 'Password99';
+        assert('Security: Passwords must not be stored in plain text (salted SHA-256 hash verified)', !isPlaintextStored && storedUser.passwordHash && storedUser.salt);
+
+        // 5. Duplicate username and duplicate email check
+        const dupUserResult = await AppAuth.register({ username: 'tester1', email: 'different@domain.com', password: 'Password99' });
+        assert('Duplicate check: Rejects duplicate username', !dupUserResult.success && dupUserResult.error.toLowerCase().includes('already exists'));
+
+        const dupEmailResult = await AppAuth.register({ username: 'differentUser', email: 'tester1@domain.com', password: 'Password99' });
+        assert('Duplicate check: Rejects duplicate email address', !dupEmailResult.success && dupEmailResult.error.toLowerCase().includes('already exists'));
+
+        // 6. Login form validation & generic credential handling
+        const emptyLogin = await AppAuth.login({ identifier: '', password: '' });
+        assert('Login: Rejects empty submission', !emptyLogin.success);
+
+        const unknownUserLogin = await AppAuth.login({ identifier: 'nonexistentUser', password: 'Password99' });
+        assert('Login: Generic error for unknown user (does not reveal username status)', !unknownUserLogin.success && unknownUserLogin.error === AppAuth.GENERIC_AUTH_ERROR);
+
+        const wrongPasswordLogin = await AppAuth.login({ identifier: 'tester1', password: 'WrongPassword1' });
+        assert('Login: Generic error for wrong password (identical to unknown user error)', !wrongPasswordLogin.success && wrongPasswordLogin.error === AppAuth.GENERIC_AUTH_ERROR);
+
+        // 7. Successful login & session creation
+        const validLogin = await AppAuth.login({ identifier: 'tester1', password: 'Password99' });
+        assert('Login: Successful authentication creates active session', validLogin.success && validLogin.session.userId === storedUser.id);
+
+        const activeSession = AppStorage.getActiveSession();
+        assert('Session: Active session persisted and accessible', activeSession && activeSession.username === 'tester1');
+
+        // Login via email
+        const emailLogin = await AppAuth.login({ identifier: 'tester1@domain.com', password: 'Password99' });
+        assert('Login: Successfully authenticates using email identifier', emailLogin.success);
+
+        // 8. Logout and session clearing
+        AppStorage.clearActiveSession();
+        assert('Logout: Clears active session from storage', AppStorage.getActiveSession() === null);
+
+      } catch (err) {
+        assert('Test Suite Execution', false, err.message);
+      } finally {
+        // Restore backups if there were any
+        if (backupUsers) localStorage.setItem('auth_system_users', backupUsers);
+        if (backupSession) localStorage.setItem('auth_system_session', backupSession);
+      }
+
+      // Render test UI
+      resultsContainer.innerHTML = '';
+      tests.forEach(t => {
+        const item = document.createElement('div');
+        item.className = `test-item ${t.pass ? 'pass' : 'fail'}`;
+        item.innerHTML = `
+          <div>
+            <div class="test-name">${t.name}</div>
+            ${t.details ? `<div class="test-details">${t.details}</div>` : ''}
+          </div>
+          <span class="test-status ${t.pass ? 'pass' : 'fail'}">${t.pass ? 'PASSED' : 'FAILED'}</span>
+        `;
+        resultsContainer.appendChild(item);
+      });
+
+      document.getElementById('badgePass').textContent = `Passing: ${passed}`;
+      document.getElementById('badgeFail').textContent = `Failing: ${failed}`;
+      document.getElementById('badgeTotal').textContent = `Total: ${tests.length}`;
+
+      // Report results to test listener if available
+      try {
+        fetch('/report-results', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ passed, failed, total: tests.length, tests })
+        }).catch(() => {});
+      } catch (e) {}
+    }
+
+    document.getElementById('rerunBtn').addEventListener('click', runTestSuite);
+    window.addEventListener('DOMContentLoaded', runTestSuite);
+  </script>
+</body>
+</html>

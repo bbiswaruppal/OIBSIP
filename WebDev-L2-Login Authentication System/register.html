@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register - Authentication System</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <main class="auth-container">
+    <div class="auth-card">
+      <header class="auth-header">
+        <div class="auth-logo" aria-hidden="true">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+          </svg>
+        </div>
+        <h1 class="auth-title">Create Account</h1>
+        <p class="auth-subtitle">Sign up to get started with your secure dashboard</p>
+      </header>
+
+      <!-- Alert Notification Banner -->
+      <div id="alertBox" class="alert-box" role="alert" aria-live="polite">
+        <svg class="alert-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path id="alertIconPath" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <span id="alertMessage" class="alert-content"></span>
+      </div>
+
+      <!-- Registration Form -->
+      <form id="registerForm" novalidate>
+        <!-- Username Field -->
+        <div class="form-group">
+          <label for="usernameInput" class="form-label">Username</label>
+          <div class="input-wrapper">
+            <input 
+              type="text" 
+              id="usernameInput" 
+              name="username" 
+              class="form-input" 
+              placeholder="e.g. johndoe" 
+              autocomplete="username"
+              required
+            >
+          </div>
+          <p id="usernameError" class="field-error-msg"></p>
+        </div>
+
+        <!-- Email Field -->
+        <div class="form-group">
+          <label for="emailInput" class="form-label">Email Address</label>
+          <div class="input-wrapper">
+            <input 
+              type="email" 
+              id="emailInput" 
+              name="email" 
+              class="form-input" 
+              placeholder="name@example.com" 
+              autocomplete="email"
+              required
+            >
+          </div>
+          <p id="emailError" class="field-error-msg"></p>
+        </div>
+
+        <!-- Password Field -->
+        <div class="form-group">
+          <label for="passwordInput" class="form-label">Password</label>
+          <div class="input-wrapper">
+            <input 
+              type="password" 
+              id="passwordInput" 
+              name="password" 
+              class="form-input has-icon-end" 
+              placeholder="Minimum 8 characters" 
+              autocomplete="new-password"
+              required
+            >
+            <button type="button" class="toggle-password-btn" id="togglePasswordBtn" aria-label="Toggle password visibility">
+              <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+              </svg>
+            </button>
+          </div>
+          <p id="passwordError" class="field-error-msg"></p>
+
+          <!-- Real-time Password Requirements Checklist -->
+          <div class="password-requirements" aria-label="Password requirements">
+            <div class="requirements-title">Password must contain:</div>
+            <div id="ruleMinLength" class="requirement-item">
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <circle cx="12" cy="12" r="9" stroke-width="2" />
+              </svg>
+              <span>At least 8 characters</span>
+            </div>
+            <div id="ruleNumber" class="requirement-item">
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <circle cx="12" cy="12" r="9" stroke-width="2" />
+              </svg>
+              <span>At least 1 number (0-9)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Confirm Password Field -->
+        <div class="form-group">
+          <label for="confirmPasswordInput" class="form-label">Confirm Password</label>
+          <div class="input-wrapper">
+            <input 
+              type="password" 
+              id="confirmPasswordInput" 
+              name="confirmPassword" 
+              class="form-input has-icon-end" 
+              placeholder="Re-enter your password" 
+              autocomplete="new-password"
+              required
+            >
+            <button type="button" class="toggle-password-btn" id="toggleConfirmPasswordBtn" aria-label="Toggle confirm password visibility">
+              <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+              </svg>
+            </button>
+          </div>
+          <p id="confirmPasswordError" class="field-error-msg"></p>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" id="registerBtn" class="btn-primary">
+          <span>Register</span>
+        </button>
+      </form>
+
+      <footer class="auth-footer">
+        Already have an account? <a href="login.html">Log In</a>
+      </footer>
+    </div>
+  </main>
+
+  <script src="js/crypto.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/register.js"></script>
+</body>
+</html>

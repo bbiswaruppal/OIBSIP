@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Protected Area</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <!-- Immediate Guard: Prevent content flashing if accessed without a valid session -->
+  <script>
+    (function () {
+      try {
+        var rawSession = localStorage.getItem('auth_system_session') || sessionStorage.getItem('auth_system_session');
+        if (!rawSession) {
+          var target = encodeURIComponent(window.location.pathname.split('/').pop() || 'dashboard.html');
+          window.location.replace('login.html?unauthorized=true&redirect=' + target);
+        }
+      } catch (e) {
+        window.location.replace('login.html?unauthorized=true');
+      }
+    })();
+  </script>
+</head>
+<body>
+  <main class="dashboard-container">
+    <div class="dashboard-card">
+      <!-- Dashboard Navigation Bar -->
+      <nav class="dashboard-nav">
+        <div class="dashboard-brand">
+          <div class="auth-logo" style="width: 36px; height: 36px; border-radius: 8px; margin-bottom: 0;">
+            <svg style="width: 20px; height: 20px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </div>
+          <span>Secure Dashboard</span>
+          <span class="badge-auth">Authenticated</span>
+        </div>
+
+        <button type="button" id="logoutBtn" class="btn-danger" aria-label="Log out of application">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+          </svg>
+          <span>Log Out</span>
+        </button>
+      </nav>
+
+      <!-- Dashboard Content Body -->
+      <div class="dashboard-body">
+        <section class="welcome-banner">
+          <h1>Welcome, <span id="welcomeUsername">User</span>!</h1>
+          <p>You have successfully authenticated. This is a protected page accessible only with an active session.</p>
+        </section>
+
+        <!-- User Information Cards -->
+        <div class="info-grid">
+          <div class="info-card">
+            <div class="info-card-label">Username</div>
+            <div id="cardUsername" class="info-card-value">-</div>
+          </div>
+
+          <div class="info-card">
+            <div class="info-card-label">Email Address</div>
+            <div id="cardEmail" class="info-card-value">-</div>
+          </div>
+
+          <div class="info-card">
+            <div class="info-card-label">User ID</div>
+            <div id="cardUserId" class="info-card-value mono">-</div>
+          </div>
+
+          <div class="info-card">
+            <div class="info-card-label">Registration Date</div>
+            <div id="cardRegisteredAt" class="info-card-value">-</div>
+          </div>
+
+          <div class="info-card">
+            <div class="info-card-label">Session Login Time</div>
+            <div id="cardLoginAt" class="info-card-value">-</div>
+          </div>
+
+          <div class="info-card">
+            <div class="info-card-label">Session Status</div>
+            <div class="info-card-value" style="color: var(--success); display: flex; align-items: center; gap: 6px;">
+              <span style="width: 8px; height: 8px; border-radius: 50%; background: var(--success); display: inline-block;"></span>
+              Active Session
+            </div>
+          </div>
+        </div>
+
+        <!-- Security & System Architecture Details -->
+        <section class="security-section">
+          <h3>
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+            </svg>
+            Security & Implementation Verification
+          </h3>
+          <p>
+            This authentication system uses the native <strong>Web Crypto API</strong> to securely hash passwords with a unique 16-byte cryptographic salt (SHA-256) prior to storage. Plain-text passwords are never stored. Session states are guarded at runtime: directly accessing this URL without a valid session automatically triggers an immediate redirection to the login portal.
+          </p>
+        </section>
+
+        <div class="dashboard-actions">
+          <button type="button" id="footerLogoutBtn" class="btn-secondary">
+            <span>Sign Out</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/crypto.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
